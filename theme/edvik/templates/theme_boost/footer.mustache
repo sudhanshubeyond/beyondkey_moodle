@@ -1,0 +1,133 @@
+
+
+{{#output.enable_navbar_style_two}}
+    <div class="newsletter-style-two">
+{{/output.enable_navbar_style_two}}
+
+{{^ output.enable_navbar_style_two}}
+    <div class="newsletter-style-one">
+{{/output.enable_navbar_style_two}}
+{{{ output.edvik_footer_newsletter }}}
+</div>
+
+<footer class="footer-wrap style-two bg-title position-relative index-1 round-10 footer-newsletter-{{fNewslatter}}">
+    <div class="container pt-100 pb-90">
+        <div class="row footer-widget-wrap d-flex flex-wrap justify-content-between pb-70">
+            <div class="col-xl-3">
+                <div class="footer-widget position-relative mb-30 text-xl-start">
+
+                    {{#footer_logo_visibility}}
+                        <a class="logo" href="{{{ config.wwwroot }}}/">
+                            {{#main_footer_logo}}
+                                <img src="{{main_footer_logo}}" alt="{{sitename}}"  {{#footer_logo_styles}} style="{{{footer_logo_styles}}}" {{/footer_logo_styles}}>
+                            {{/main_footer_logo}}
+
+                            {{^ main_footer_logo }}
+                                <h2 class="text-light"  {{#footer_logo_styles}} style="{{{footer_logo_styles}}}" {{/footer_logo_styles}}>Beyondkey</h2>
+                            {{/main_footer_logo}}
+                        </a>
+                    {{/footer_logo_visibility}}
+
+                    <p class="comp-desc text-optional">{{{footer_info}}}</p>
+
+                    <h6 class="fs-18 font-regular text-white d-block">Social Media</h6>
+                    <ul class="social-profile list-unstyle">
+                        {{> theme_edvik/edvik_social_icons }}
+                    </ul>
+                </div>
+            </div>
+            <div class="col-xl-9 ps-xxl-5">
+                <div class="row">
+
+                    {{#footer_column_1}}
+                        <div class="{{{footer_col_1_class}}} col-lg-3 col-md-6 ps-xxl-4">
+                            <div class="footer-widget position-relative mb-30">
+
+                                {{#footer_col_1_title}}
+                                    <h3 class="footer-widget-title text-white position-relative d-inline-block fw-medium">{{{ footer_col_1_title }}}</h3>
+                                {{/footer_col_1_title}}
+
+                                {{#footer_col_1_body}}
+                                    {{{footer_col_1_body}}}
+                                {{/footer_col_1_body}}
+                            </div>
+                        </div>
+                    {{/footer_column_1}}
+
+                    {{#footer_column_2}}
+                        <div class="{{{footer_col_2_class}}} col-lg-3 col-md-6 ps-xxl-0">
+                            <div class="footer-widget position-relative mb-30">
+
+                                {{#footer_col_2_title}}
+                                    <h3 class="footer-widget-title text-white position-relative d-inline-block fw-medium">{{{ footer_col_2_title }}}</h3>
+                                {{/footer_col_2_title}}
+
+                                {{#footer_col_2_body}}
+                                    {{{footer_col_2_body}}}
+                                {{/footer_col_2_body}}
+                            </div>
+                        </div>
+                    {{/footer_column_2}}
+
+                    {{#footer_column_3}}
+                        <div class="{{{footer_col_3_class}}} col-lg-3 col-md-6 ps-xxl-0">
+                            <div class="footer-widget position-relative mb-30 ms-xxl-10">
+
+                                {{#footer_col_3_title}}
+                                    <h3 class="footer-widget-title text-white position-relative d-inline-block fw-medium">{{{ footer_col_3_title }}}</h3>
+                                {{/footer_col_3_title}}
+
+                                {{#footer_col_3_body}}
+                                    {{{footer_col_3_body}}}
+                                {{/footer_col_3_body}}
+                            </div>
+                        </div>
+                    {{/footer_column_3}}
+
+                    {{#footer_column_4}}
+                        <div class="{{{footer_col_4_class}}} col-lg-3 col-md-6 ps-xxl-0">
+                            <div class="footer-widget position-relative mb-30 ms-xxl-20">
+                                {{#footer_col_4_title}}
+                                    <h3 class="footer-widget-title text-white position-relative d-inline-block fw-medium">{{{ footer_col_4_title }}}</h3>
+                                {{/footer_col_4_title}}
+
+                                {{#footer_col_4_body}}
+                                    {{{footer_col_4_body}}}
+                                {{/footer_col_4_body}}
+                            </div>
+                        </div>
+                    {{/footer_column_4}}
+
+                    {{#footer_column_5}}
+                        <div class="{{{footer_col_5_class}}} col-lg-3 col-md-6 ps-xxl-0">
+                            <div class="footer-widget position-relative mb-30 ms-xxl-20">
+                                {{#footer_col_5_title}}
+                                    <h3 class="footer-widget-title text-white position-relative d-inline-block fw-medium">{{{ footer_col_5_title }}}</h3>
+                                {{/footer_col_5_title}}
+
+                                {{#footer_col_5_body}}
+                                    {{{footer_col_5_body}}}
+                                {{/footer_col_5_body}}
+                            </div>
+                        </div>
+                    {{/footer_column_5}}
+                </div>
+            </div>
+        </div>
+
+        <!-- Copyright Area -->
+        {{{ output.get_footer_bottom }}}
+
+    </div>
+</footer>
+
+
+{{#back_to_top}}
+    <!-- Start Go Top Area -->
+    <button type="button" id="backtotop" class="position-fixed text-center border-0 p-0">
+        <i class="ri-arrow-up-line"></i>
+    </button>
+    <!-- End Go Top Area -->
+{{/back_to_top}}
+
+{{{ output.standard_end_of_body_html }}}

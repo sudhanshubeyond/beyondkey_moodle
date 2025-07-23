@@ -1,0 +1,186 @@
+{{#output.enable_navbar_style_two}}
+<div class="navbar-area style-two position-relative" id="navbar">
+{{/output.enable_navbar_style_two}}
+
+{{^ output.enable_navbar_style_two}}
+    <div class="navbar-area style-one position-relative" id="navbar">
+{{/output.enable_navbar_style_two}}
+
+    {{#top_header}}
+        <div class="navbar-top bg-title">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-9 col-lg-8">
+                        <p class="fs-13 mb-0 text-lg-start">{{{top_header_content}}}</p>
+                    </div>
+
+                    {{#top_header_right_content}}
+                        <div class="col-xl-3 col-lg-4">
+                            <div class="filter-wrapper d-flex align-items-center justify-content-lg-end justify-content-center">
+                                <div class="lang-select">
+                                    {{{top_header_right_content}}}
+                                </div>
+                            </div>
+                        </div>
+                    {{/top_header_right_content}}
+                </div>
+            </div>
+        </div>
+    {{/top_header}}
+
+    <div class="container-fluid {{output.edvik_is_siteadmin}}">
+        <nav class="navbar navbar-expand-lg d-flex justify-content-between align-items-center">
+             {{#logo_visibility}}
+                <a style="width:165px!important;" class="navbar-brand m-0" href="{{{ config.wwwroot }}}/">
+                  <img src="{{{ config.wwwroot }}}/theme/edvik/pix/company-logo.png" alt="{{sitename}}"  {{#logo_styles}} style="{{{logo_styles}}}" {{/logo_styles}}>
+                </a>
+            {{/logo_visibility}}
+
+            {{#category_title}}
+                <ul class="category-menu list-unstyle">
+                    <li>
+                        <a href="javascript:void(0)"><img style="margin-right:0px!important;" src="{{{ config.wwwroot }}}/theme/edvik/pix/icons/category-icon.svg" alt="Icon"></a>
+                        <ul class="list-unstyle position-absolute bg-white transition">
+                           {{{category_content}}}
+                        </ul>
+                    </li>
+                </ul>
+            {{/category_title}}
+
+            <div class="other-options d-flex align-items-center justify-content-end d-lg-none">
+               {{#header_search_bar}}
+                    <div class="option-item">
+                        <button type="button" class="search-btn bg-transparent border-0 p-0" data-toggle="modal" data-target="#searchModal">
+                            <img src="{{{ config.wwwroot }}}/theme/edvik/pix/icons/search-icon.svg" alt="Search Icon">
+                        </button>
+                    </div>
+                {{/header_search_bar}}
+
+                <div class="option-item">
+                    {{#header_btn_url}} <a href="{{header_btn_url}}" class="signup-btn border-0 p-0 round-4 transition"> {{/header_btn_url}}
+                    {{^ header_btn_url }} <a href="{{ login_url }}" class="signup-btn border-0 p-0 round-4 transition"> {{/header_btn_url}}
+                        <img src="{{{ config.wwwroot }}}/theme/edvik/pix/icons/user.svg" alt="User Icon">
+                    </a>
+                </div>
+
+                <div class="option-item">
+                    <a class="navbar-toggler toggle-btn d-lg-none" data-toggle="offcanvas" href="#navbarOffcanvas" role="button" aria-controls="navbarOffcanvas">
+                        <span class="burger-menu">
+                            <span class="top-bar"></span>
+                            <span class="middle-bar"></span>
+                            <span class="bottom-bar"></span>
+                        </span>
+                    </a>
+                </div>
+            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav mx-auto">
+                    {{{ output.custom_menu }}}
+                </ul>
+
+                    <div class="other-options d-flex align-items-center justify-content-end">
+
+                        {{#header_search_bar}}
+                            <div class="option-item">
+                                <button type="button" class="search-btn bg-transparent border-0 p-0" data-toggle="modal" data-target="#searchModal">
+                                    <img src="{{{ config.wwwroot }}}/theme/edvik/pix/icons/search-icon.svg" alt="Search Icon">
+                                </button>
+                            </div>
+                        {{/header_search_bar}}
+
+                        {{#header_left_btn_text}}
+                            <div class="option-item">
+                                {{#header_left_btn_url}} <a href="{{header_left_btn_url}}" class="btnn style-three round-4"> {{/header_left_btn_url}}
+                                {{^ header_left_btn_url }} <a href="{{ signup_url }}" class="btnn style-three round-4"> {{/header_left_btn_url}}
+                                    {{header_left_btn_text}}
+                                </a>
+                            </div>
+                        {{/header_left_btn_text}}
+
+                    {{^ isloggedin}}
+                        <div class="option-item">
+                            {{#header_btn_url}} <a href="{{header_btn_url}}" class="signup-btn border-0 round-4 transition"> {{/header_btn_url}}
+                            {{^ header_btn_url }} <a href="{{ login_url }}" class="signup-btn border-0 round-4 transition"> {{/header_btn_url}}
+                                <img src="{{{ config.wwwroot }}}/theme/edvik/pix/icons/user.svg" alt="User Icon">
+                            </a>
+                        </div>
+                    {{/isloggedin}}
+                    </div>
+
+                {{#isloggedin}}
+                    {{> theme_edvik/edvik_navbar_user }}
+                {{/isloggedin}}
+            </div>
+        </nav>
+    </div>
+</div>
+<!-- Navbar Area End-->
+
+<!-- Responsive Navbar Area Start-->
+<div class="responsive-navbar offcanvas offcanvas-end border-0 navbar-collapse" tabindex="-1" id="navbarOffcanvas">
+    <div class="offcanvas-header">
+        {{#logo_visibility}}
+            <a class="logo d-inline-block" href="{{{ config.wwwroot }}}/">
+                {{#main_logo}}
+                    <img src="{{main_logo}}" alt="{{sitename}}"  {{#logo_styles}} style="{{{logo_styles}}}" {{/logo_styles}}>
+                {{/main_logo}}
+
+                {{^ main_logo }}
+                    <h2  {{#logo_styles}} style="{{{logo_styles}}}" {{/logo_styles}}>{{sitename}}</h2>
+                {{/main_logo}}
+            </a>
+        {{/logo_visibility}}
+
+        <button type="button" class="close-btn bg-transparent position-relative lh-1 p-0 border-0" data-dismiss="offcanvas" aria-label="Close">
+            <i class="ri-close-line"></i>
+        </button>
+    </div>
+
+    <div class="edvik_navbar_user">
+        {{#isloggedin}}
+            {{> theme_edvik/edvik_navbar_user }}
+        {{/isloggedin}}
+    </div>
+
+    <div class="offcanvas-body">
+        <ul class="navbar-nav">
+            {{{ output.custom_menu }}}
+        </ul>
+
+        {{#header_left_btn_text}}
+            <div class="option-item mt-3">
+                {{#header_left_btn_url}} <a href="{{header_left_btn_url}}" class="btn btn-primary"> {{/header_left_btn_url}}
+                {{^ header_left_btn_url }} <a href="{{ signup_url }}" class="btn btn-primary"> {{/header_left_btn_url}}
+                    {{header_left_btn_text}}
+                </a>
+            </div>
+        {{/header_left_btn_text}}
+    </div>
+</div>
+<!-- Responsive Navbar Area End-->
+
+{{#header_search_bar}}
+    <!-- Start Search Modal -->
+    <div class="modal search-modal-area"  id="searchModal" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-hidden="true">
+        <button type="button" class="d-flex flex-column align-items-center justify-content-center rounded-circle position-absolute bg_primary border-0 close-btn" data-dismiss="modal" aria-label="Close">
+            <i class="ri-close-line"></i>
+        </button>
+        <div class="modal-dialog modal-xl modal-dialog-centered">
+            <div class="modal-content border-0 rounded-0 bg-transparent">
+                <div class="modal-body">
+                    <div class="container">
+                        <div class="col-xl-12">
+                            <div class="search-form">
+                                {{{edvik_globalsearch_navbar}}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="close-overlay"></div>
+    </div>
+    <!-- End Search Modal -->
+{{/header_search_bar}}
+
+{{> theme_boost/primary-drawer-mobile }}

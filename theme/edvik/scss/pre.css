@@ -1,0 +1,34 @@
+:root {
+  --regularFont: "Euclid-Regular";
+  --mediumFont: "Euclid-Medium";
+  --semiboldFont: "Euclid-Semibold";
+  --boldFont: "Euclid-Bold";
+  --lightFont: "Euclid-Light";
+  --main-color: [[setting:brandcolor]];
+  --optional-color: [[setting:secondarycolor]];
+  --footerBG: [[setting:footer_bg]];
+  --orangeColor: #EC7937;
+  --optionalColor: #96A49F;
+  --titleColor: #0B110F;
+  --iconColor: #9B97B6;
+  --blueColor: #4EC9FF;
+  --whiteColor: #fff;
+  --yellowColor: #FFDD74;
+  --paraColor: #848484;
+  --paraColorTwo: #7E799E;
+  --tandoraColor: #484848;
+  --paragraphColor: #444F6E;
+  --grayColor: #F2F7FD;
+  --offwhiteColor:rgba(255,255,255,0.7);
+  --aztechColor:#111828;
+  --codColor: #12131B;
+  --blackColor: #000;
+  --fontSize: 16px;
+  --transition: all ease .5s;
+}
+
+body {
+  font-size: var(--fontSize);
+  font-family: var(--regularFont) !important;
+  color: var(--paraColor);
+}/*# sourceMappingURL=pre.css.map */

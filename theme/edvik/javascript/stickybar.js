@@ -1,0 +1,1 @@
+window.addEventListener("scroll",function(){document.querySelector(".scroll-tablist").classList.toggle("fixed",window.scrollY>480)});
