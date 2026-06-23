@@ -121,3 +121,6 @@ $string['navtoc'] = 'TOC Only';
 
 // Deprecated since Moodle 4.5.
 $string['tagsdeleted'] = 'Book tags have been deleted';
+
+$string['video_transcript_highlight_color'] = 'Video Transcript Highlight Color';
+$string['video_transcript_highlight_color_desc'] = 'Select the color for highlighting text in the video transcript.';

@@ -131,6 +131,13 @@ switch ($action) {
         if (($v = optional_param('newauthor', false, PARAM_TEXT)) !== false) {
             $updatedata['author'] = $v;
         }
+
+	// Custom code start
+        if (($v = optional_param('newrole', false, PARAM_TEXT)) !== false) {
+            $updatedata['accessrole'] = $v;
+        }
+        // Custom code end
+
         try {
             repository::update_draftfile($draftid, $filepath, $filename, $updatedata);
         } catch (moodle_exception $e) {

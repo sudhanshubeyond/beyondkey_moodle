@@ -3355,6 +3355,7 @@ select {
 }
 
 .cat-card.style-one {
+  height: 210px;
   padding: 40px 10px;
 }
 .cat-card.style-one img {
@@ -6913,8 +6914,7 @@ select {
 }
 .course-card .course-teacher .text-orange, .course-card .course-tag {
   position: relative;
-  top: -2px;
-}
+  }
 .course-card .course-metainfo i {
   color: #9b97b6;
   font-size: 16px;

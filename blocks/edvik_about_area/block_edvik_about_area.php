@@ -15,12 +15,12 @@ class block_edvik_about_area extends block_base {
             $this->config = new \stdClass();
 
             $this->config->class = 'about-wrap style-one ptb-100';
-            $this->config->top_title = 'ABOUT EDVIK​';
-            $this->config->title = 'Affordable online courses​';
-            $this->config->mid_title = 'learning';
-            $this->config->last_title = 'opportunities​';
-            $this->config->body = 'Break into a new field like information technology o data science. No prior experience necessary to get started.';
-            $this->config->lists = 'Expert Instructors, Remote Learning, Lifetime Free Access, Self Development';
+            $this->config->top_title = 'ABOUT ELEARNING SOLUTION';
+            $this->config->title = 'Why Our Learning​';
+            $this->config->mid_title = 'Platform';
+            $this->config->last_title = 'Stands Out';
+            $this->config->body = 'Learn job-ready skills with flexible, expert-led training built for real growth. Whether you are switching careers or sharpening your edge, our platform makes learning easy, accessible, and impactful.';
+            $this->config->lists = 'Industry-Approved Courses, Learn Anytime, Anywhere, Lifetime Access to Content, Practical Skills for Real-World Growth';
             $this->config->list_icon = EDVIK_IMG .'icons/check.svg';
             $this->config->btn = 'Learn More';
             $this->config->btn_link = $CFG->wwwroot .'/course';
@@ -46,7 +46,7 @@ class block_edvik_about_area extends block_base {
         }
         $this->content         =  new stdClass;
 
-        $lists = $this->config->lists ;
+        $lists = 'Industry-Approved Courses, Learn Anytime Anywhere, Lifetime Access to Content, Practical Skills, Real-World Growth';//$this->config->lists ;
         $items_array = array_map('trim', explode(",", $lists));
 
         $text = '';
@@ -59,12 +59,12 @@ class block_edvik_about_area extends block_base {
 
                                 '; if($this->config->shape1):
                                     $text .= '
-                                    <img src="'.edvik_block_image_process($this->config->shape1).'" class="shape-one position-absolute" alt="'.strip_tags($this->config->title).'">';
+                                    <img src="'.edvik_block_image_process($this->config->shape1).'" class="shape-one position-absolute" alt="'.strip_tags('Why Our Learning').'">';
                                 endif;
 
                                 if($this->config->shape2):
                                     $text .= '
-                                    <img src="'.edvik_block_image_process($this->config->shape2).'" class="shape-two position-absolute" alt="'.strip_tags($this->config->title).'">';
+                                    <img src="'.edvik_block_image_process($this->config->shape2).'" class="shape-two position-absolute" alt="'.strip_tags('Why Our Learning').'">';
                                 endif;
                                 
                                 if($this->config->card1_img || $this->config->card1_title || $this->config->card1_content):
@@ -72,7 +72,7 @@ class block_edvik_about_area extends block_base {
                                     <div class="learning-box d-inline-flex align-items-center bg-yellow round-10 position-absolute">'; 
                                         if($this->config->card1_img):
                                             $text .= '
-                                            <img src="'.edvik_block_image_process($this->config->card1_img).'" alt="'.strip_tags($this->config->title).'">';
+                                            <img src="'.edvik_block_image_process($this->config->card1_img).'" alt="'.strip_tags('Why Our Learning').'">';
                                         endif;
                                         $text .= '
                                         <div>
@@ -84,7 +84,7 @@ class block_edvik_about_area extends block_base {
 
                                 if($this->config->img):
                                     $text .= '
-                                    <img src="'.edvik_block_image_process($this->config->img).'" class="about-img d-block mx-auto" alt="'.strip_tags($this->config->title).'">';
+                                    <img src="'.edvik_block_image_process($this->config->img).'" class="about-img d-block mx-auto" alt="'.strip_tags('Why Our Learning').'">';
                                 endif;
 
                                 if($this->config->card2_img || $this->config->card2_title || $this->config->card2_content):
@@ -93,7 +93,7 @@ class block_edvik_about_area extends block_base {
                                         <div class="edvik-icon d-flex flex-column align-items-center justify-content-center rounded-circle">'; 
                                             if($this->config->card2_img):
                                                 $text .= '
-                                                <img src="'.edvik_block_image_process($this->config->card2_img).'"  alt="'.strip_tags($this->config->title).'">';
+                                                <img src="'.edvik_block_image_process($this->config->card2_img).'"  alt="'.strip_tags('Why Our Learning').'">';
                                             endif;
                                             $text .= '
                                         </div>
@@ -108,19 +108,19 @@ class block_edvik_about_area extends block_base {
                         <div class="col-lg-6 col-xxl-5 offset-xxl-1">
                             <div class="about-content position-relative">
                                 <div class="section-title style-one overflow-hidden">
-                                    <span class="fs-13 font-medium d-block text_primary">'.format_text($this->config->top_title, FORMAT_HTML, array('filter' => true)).'</span>
+                                    <span class="fs-13 font-medium d-block text_primary">'.format_text('ABOUT ELEARNING SOLUTION', FORMAT_HTML, array('filter' => true)).'</span>
                                     <h2 class="d-inline-block font-semibold position-relative">
-                                        '.format_text($this->config->title, FORMAT_HTML, array('filter' => true)).'   
+                                        '.format_text('Why Our Learning', FORMAT_HTML, array('filter' => true)).'   
                                             <span class="ls-0 position-relative">
-                                                '.format_text($this->config->mid_title, FORMAT_HTML, array('filter' => true)).' 
+                                                '.format_text('Platform', FORMAT_HTML, array('filter' => true)).' 
                                                 '; if($this->config->section_title_shape): $text .= '
-                                                    <img src="'.edvik_block_image_process($this->config->section_title_shape).'" class="position-absolute bottom-0" alt="'.strip_tags($this->config->title).'">';
+                                                    <img src="'.edvik_block_image_process($this->config->section_title_shape).'" class="position-absolute bottom-0" alt="'.strip_tags('Why Our Learning').'">';
                                                 endif;
                                                 $text .= '
                                             </span> 
-                                        '.format_text($this->config->last_title, FORMAT_HTML, array('filter' => true)).'
+                                        '.format_text('Stands Out', FORMAT_HTML, array('filter' => true)).'
                                     </h2>
-                                    <p>'.format_text($this->config->body, FORMAT_HTML, array('filter' => true)).'</p>
+                                    <p>'.format_text('Learn job-ready skills with flexible, expert-led training built for real growth. Whether you are switching careers or sharpening your edge, our platform makes learning easy, accessible, and impactful.', FORMAT_HTML, array('filter' => true)).'</p>
                                 </div>
 
                                 <ul class="feature-list list-unstyle">';
@@ -129,7 +129,7 @@ class block_edvik_about_area extends block_base {
                                             <li class="position-relative text-title">'; 
                                                 if($this->config->list_icon):
                                                     $text .= '
-                                                    <img src="'.edvik_block_image_process($this->config->list_icon).'" alt="'.strip_tags($this->config->title).'">';
+                                                    <img src="'.edvik_block_image_process($this->config->list_icon).'" alt="'.strip_tags('Why Our Learning').'">';
                                                 endif;
                                                 $text .= '
                                                 '.format_text($item, FORMAT_HTML, array('filter' => true)).'

@@ -20,29 +20,29 @@ class block_edvik_features_area_two extends block_base {
                     <div class="wh-wrap style-one position-relative index-1 pt-100 pb-70">
                         <div class="section-title style-nine text-center mb-60">
                             <span class="fs-13 font-medium d-block text_primary">WHY EDVIK</span>
-                            <h2 class="d-inline-block font-semibold position-relative mb-0">Here is the future of distant learning<img src="'.$CFG->wwwroot.'/theme/edvik/pix/section-title-shape-1.webp" alt="Shape" class="position-absolute bottom-0 end-0"></h2>
+                            <h2 class="d-inline-block font-semibold position-relative mb-0">Why Choose Our Learning Platform<img src="'.$CFG->wwwroot.'/theme/edvik/pix/section-title-shape-1.webp" alt="Shape" class="position-absolute bottom-0 end-0"></h2>
                         </div>
                         <div class="wh-card-wrap d-flex flex-wrap">
                             <div class="wh-card position-relative index-1 mb-30">
                                 <div class="wh-title d-flex align-items-center">
                                     <img src="'.$CFG->wwwroot.'/theme/edvik/pix/about/rocket.svg" alt="Image">
-                                    <h3 class="fs-22 font-medium ls-1 mb-0">Learn the latest top skills</h3>
+                                    <h3 class="fs-22 font-medium ls-1 mb-0">Master In-Demand Skills</h3>
                                 </div>
-                                <p class="mb-0">Explore all of our courses and pick your suitable ones to enroll and start learning.</p>
+                                <p class="mb-0">Stay ahead in your career by learning the latest technologies, business strategies, and professional tools.</p>
                             </div>
                             <div class="wh-card position-relative index-1 mb-30">
                                 <div class="wh-title d-flex align-items-center">
                                     <img src="'.$CFG->wwwroot.'/theme/edvik/pix/about/video-conference.svg" alt="Image">
                                     <h3 class="fs-22 font-medium ls-1 mb-0">Learn from industry experts</h3>
                                 </div>
-                                <p class="mb-0">Explore all of our courses and pick your suitable ones to enroll and start learning.</p>
+                                <p class="mb-0">Courses are designed and delivered by certified professionals with real-world experience.</p>
                             </div>
                             <div class="wh-card position-relative index-1 mb-30">
                                 <div class="wh-title d-flex align-items-center">
                                     <img src="'.$CFG->wwwroot.'/theme/edvik/pix/about/goal.svg" alt="Image">
                                     <h3 class="fs-22 font-medium ls-1 mb-0">Learn in your own pace</h3>
                                 </div>
-                                <p class="mb-0">Explore all of our courses and pick your suitable ones to enroll and start learning.</p>
+                                <p class="mb-0">Access self-paced modules that fit your schedule, whether you are at home, at work, or on the go.</p>
                             </div>
                         </div>
                     </div>

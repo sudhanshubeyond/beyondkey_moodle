@@ -783,6 +783,7 @@ function file_get_drafarea_files($draftitemid, $filepath = '/') {
             $item->sortorder = $file->get_sortorder();
             $item->author = $file->get_author();
             $item->license = $file->get_license();
+	    $item->accessrole = $file->get_accessrole();  // Custom code
             $item->datemodified = $file->get_timemodified();
             $item->datecreated = $file->get_timecreated();
             $item->isref = $file->is_external_file();
@@ -1236,6 +1237,12 @@ function file_save_draft_area_files($draftitemid, $contextid, $component, $filea
             if ($oldfile->get_license() != $newfile->get_license()) {
                 $oldfile->set_license($newfile->get_license());
             }
+
+	    // Custom code start
+	    if ($oldfile->get_accessrole() != $newfile->get_accessrole()) {
+                $oldfile->set_accessrole($newfile->get_accessrole());
+            }
+	    // Custom code end
 
             // Updated file source
             // Field files.source for draftarea files contains serialised object with source and original information.

@@ -1,0 +1,3 @@
+.resourcelibrary-tree ul { list-style-type: none; margin-left: 20px; }
+.resourcelibrary-tree li { margin: 4px 0; }
+.resourcelibrary-tree li > a { cursor: pointer; text-decoration: none; }

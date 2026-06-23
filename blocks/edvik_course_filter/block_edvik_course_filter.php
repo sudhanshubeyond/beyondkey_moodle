@@ -130,12 +130,13 @@ class block_edvik_course_filter extends block_base {
                                                 <div class="course-info">
                                                     <div class="d-flex align-items-center justify-content-between">
                                                         <div class="course-teacher">
-                                                            <div class="instructor-img rounded-circle d-inline-block">
+                                                            <span >Instructor :</span>
+                                                            <!-- <div class="instructor-img rounded-circle d-inline-block">
                                                                 <div class="edvik-icon">
                                                                     <i class="bx bx-user"></i>
                                                                 </div>
-                                                            </div>
-                                                            <a href="'. $edvikCourse->url .'" class="ms-1 text-orange">'.$teacher.'</a>
+                                                            </div>-->
+                                                            <a href="'. $edvikCourse->url .'" class="ms-1 text-orange">'.$teacher.' </a>
                                                         </div>
                                                     
                                                         <div class="course-price">';
@@ -157,11 +158,12 @@ class block_edvik_course_filter extends block_base {
                                                 </ul>
                                                 <div class="course-hover-content round-10 bg-white position-absolute top-0 w-100 h-100 transition">
                                                     <div class="course-teacher">
-                                                        <div class="instructor-img rounded-circle d-inline-block">
+                                                        <span >Instructor :</span>
+                                                        <!--<div class="instructor-img rounded-circle d-inline-block">
                                                             <div class="edvik-icon">
                                                                 <i class="bx bx-user"></i>
                                                             </div>
-                                                        </div>
+                                                        </div>-->
                                                         <a href="'. $edvikCourse->url .'" class="ms-1 text-orange">'.$teacher.'</a>
                                                     </div>
 
@@ -225,11 +227,12 @@ class block_edvik_course_filter extends block_base {
                                                         <div class="course-info">
                                                             <div class="d-flex align-items-center justify-content-between">
                                                                 <div class="course-teacher">
-                                                                    <div class="instructor-img rounded-circle d-inline-block">
+                                                                   <span >Instructor :</span>
+                                                                    <!--<div class="instructor-img rounded-circle d-inline-block">
                                                                         <div class="edvik-icon">
                                                                             <i class="bx bx-user"></i>
                                                                         </div>
-                                                                    </div>
+                                                                    </div>-->
                                                                     <a href="'. $edvikCourse->url .'" class="ms-1 text-orange">'.$teacher.'</a>
                                                                 </div>
                                                             
@@ -252,11 +255,12 @@ class block_edvik_course_filter extends block_base {
                                                         </ul>
                                                         <div class="course-hover-content round-10 bg-white position-absolute top-0 w-100 h-100 transition">
                                                             <div class="course-teacher">
-                                                                <div class="instructor-img rounded-circle d-inline-block">
+                                                                <span >Instructor :</span>
+                                                                <!--<div class="instructor-img rounded-circle d-inline-block">
                                                                     <div class="edvik-icon">
                                                                         <i class="bx bx-user"></i>
                                                                     </div>
-                                                                </div>
+                                                                </div>-->
                                                                 <a href="'. $edvikCourse->url .'" class="ms-1 text-orange">'.$teacher.'</a>
                                                             </div>
 

@@ -61,7 +61,10 @@ class service_provider implements \core_payment\local\callback\service_provider 
 
         $courseid = $DB->get_field('enrol', 'courseid', ['enrol' => 'fee', 'id' => $instanceid], MUST_EXIST);
 
-        return new \moodle_url('/course/view.php', ['id' => $courseid]);
+        if($courseid) {
+            return new \moodle_url('/payment/gateway/razorpay/success.php', ['id' => $courseid]);
+        }
+        
     }
 
     /**

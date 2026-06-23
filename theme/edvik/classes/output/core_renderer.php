@@ -159,7 +159,7 @@ class core_renderer extends \core_renderer {
                                         <h2 class="d-inline-block font-semibold position-relative">
                                             <?php echo $fn_title; ?>
                                             <?php if($fn_ts_img): ?>
-                                                <img src="<?php echo $fn_ts_img; ?>" alt="Shape" class="position-absolute bottom-0 end-0">
+                                                <img src="//edvik-moodle.hibootstrap.com/pluginfile.php/1/theme_edvik/fn_title_shape_img/-1/section-title-shape-3.webp" class="position-absolute bottom-0 end-0">
                                             <?php endif; ?>
                                         </h2>
 

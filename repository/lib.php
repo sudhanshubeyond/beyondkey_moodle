@@ -2254,6 +2254,13 @@ abstract class repository implements cacheable_object {
             if (isset($file['license']) && get_string_manager()->string_exists($file['license'], 'license')) {
                 $file['license_f'] = get_string($file['license'], 'license');
             }
+
+	    // Custom code start
+            if (isset($file['accessrole'])) {
+                $file['accessrole_f'] = $file['accessrole'];
+            }
+            // Custom code end
+
             if (isset($file['image_width']) && isset($file['image_height'])) {
                 $a = array('width' => $file['image_width'], 'height' => $file['image_height']);
                 $file['dimensions'] = get_string('imagesize', 'repository', (object)$a);
@@ -2608,6 +2615,14 @@ abstract class repository implements cacheable_object {
                 $file->set_license($updatedata['license']);
                 $filemodified = true;
             }
+
+	    // Custom code start
+            if (array_key_exists('accessrole', $updatedata) && $updatedata['accessrole'] !== $file->get_accessrole()) {
+                $file->set_accessrole($updatedata['accessrole']);
+                $filemodified = true;
+            }
+            // Custom code end
+
             if (array_key_exists('author', $updatedata) && $updatedata['author'] !== $file->get_author()) {
                 // Update author and timemodified.
                 $file->set_author($updatedata['author']);

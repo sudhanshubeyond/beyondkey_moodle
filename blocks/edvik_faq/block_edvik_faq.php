@@ -27,8 +27,8 @@ class block_edvik_faq extends block_base {
                     <div class="faq-content style-one">
                         <div class="section-title">
                             <span class="fs-13 d-block font-medium text_primary">FAQ</span>
-                            <h2 class="d-inline-block font-semibold position-relative mb-20">Affordable online courses and learning opportunities​</h2>
-                            <p class="mb-0">Explore all of our courses and pick your suitable ones to enroll and start learning with us! Flexible easy to access learning opportunities.</p>
+                            <h2 class="d-inline-block font-semibold position-relative mb-20">Frequently Asked Questions (FAQs)​</h2>
+                            <p class="mb-0">Get quick answers about our platform, enrollment, and course delivery. Flexible, easy-to-access learning opportunities designed for professionals and teams.</p>
                         </div>
                         <div class="accordion" id="accordionExample_two">
                             <div class="accordion-item collapsed bg-white" 
@@ -40,7 +40,7 @@ class block_edvik_faq extends block_base {
                                             <i class="ri-arrow-down-s-line plus"></i>
                                             <i class="ri-arrow-up-s-line minus"></i>
                                         </span>
-                                        How to admit Edvik?
+                                        How do I enroll in a course?
                                     </div>
                                 </div>
                                 <div id="collapseFour" class="accordion-collapse collapse"
@@ -59,7 +59,7 @@ class block_edvik_faq extends block_base {
                                             <i class="ri-arrow-down-s-line plus"></i>
                                             <i class="ri-arrow-up-s-line minus"></i>
                                         </span>
-                                        How to pay online in Edvik?
+                                        What are the available payment methods? 
                                     </div>
                                 </div>
                                 <div id="collapseFive" class="accordion-collapse collapse "
@@ -78,7 +78,7 @@ class block_edvik_faq extends block_base {
                                             <i class="ri-arrow-down-s-line plus"></i>
                                             <i class="ri-arrow-up-s-line minus"></i>
                                         </span>
-                                        How to teach in Edvik?
+                                        Can I become an instructor on the platform?
                                     </div>
                                 </div>
                                 <div id="collapseSix" class="accordion-collapse collapse"

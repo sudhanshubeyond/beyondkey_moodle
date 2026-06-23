@@ -40,7 +40,16 @@ if ($ADMIN->fulltree) {
     $settings->add(new admin_setting_heading('bookmodeditdefaults',
         get_string('modeditdefaults', 'admin'), get_string('condifmodeditdefaults', 'admin')));
 
-    $settings->add(new admin_setting_configselect('book/numbering',
+    $settings->add(new admin_setting_configselect('book/numbering', 
         get_string('numbering', 'mod_book'), '', BOOK_NUM_NUMBERS, $options));
+
+    // Video Transcript Highlight Color
+    $name = 'book/video_transcript_highlight_color';
+    $title = get_string('video_transcript_highlight_color', 'book');
+    $description = get_string('video_transcript_highlight_color_desc', 'book');
+    $default = '#008196';
+    $setting = new admin_setting_configcolourpicker($name, $title, $description, $default);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $settings->add($setting);
 
 }

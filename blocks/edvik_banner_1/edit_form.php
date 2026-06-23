@@ -12,12 +12,12 @@ class block_edvik_banner_1_edit_form extends block_edit_form {
 
         // Title
         $mform->addElement('text', 'config_title', 'Banner Title');
-        $mform->setDefault('config_title', 'Start distant learning free from the world’s best institutions');
+        $mform->setDefault('config_title', 'eLearning Solutions');
         $mform->setType('config_title', PARAM_RAW);
 
         // Content
         $mform->addElement('textarea', 'config_body', 'Content', 'wrap="virtual" rows="6" cols="50"');
-        $mform->setDefault('config_body', 'Flexible easy to access learning opportunities can bring a significant change in how individuals prefer to learn! The Edvik can offer you to enjoy the beauty of eLearning!');
+        $mform->setDefault('config_body', 'Deliver impactful, flexible learning experiences. Empower individual growth with scalable digital training, accessible anytime, anywhere.');
         $mform->setType('config_body', PARAM_RAW);
 
         // Search Placeholder Text

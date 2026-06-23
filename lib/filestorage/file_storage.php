@@ -2356,7 +2356,7 @@ class file_storage {
         // else problems like MDL-33172 occur.
         $filefields = array('contenthash', 'pathnamehash', 'contextid', 'component', 'filearea',
             'itemid', 'filepath', 'filename', 'userid', 'filesize', 'mimetype', 'status', 'source',
-            'author', 'license', 'timecreated', 'timemodified', 'sortorder', 'referencefileid');
+            'author', 'license', 'accessrole', 'timecreated', 'timemodified', 'sortorder', 'referencefileid');
 
         $referencefields = array('repositoryid' => 'repositoryid',
             'reference' => 'reference',

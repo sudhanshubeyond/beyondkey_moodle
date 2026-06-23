@@ -70,7 +70,7 @@ if ($courseid) {
     $courseid = null;
     $topchildren = core_course_category::top()->get_children();
     if (empty($topchildren)) {
-        throw new moodle_exception('cannotviewcategory', 'error');
+    throw new moodle_exception('cannotviewcategory', 'error');
     }
     $category = reset($topchildren);
     $categoryid = $category->id;

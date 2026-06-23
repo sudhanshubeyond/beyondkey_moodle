@@ -1,0 +1,28 @@
+<div class="block-enrollment-chart" style="min-height: 360px;">
+  {{#hascourses}}
+  <div class="controls-row d-flex gap-2 mb-2 align-items-center">
+    <label for="{{yearselectid}}" class="mr-2">{{#str}}selectyear, block_enrollment_chart{{/str}}</label>
+    <select id="{{yearselectid}}" class="custom-select">
+      {{#years}}
+        <option value="{{value}}" {{#selected}}selected{{/selected}}>{{label}}</option>
+      {{/years}}
+    </select>
+
+    <label for="{{courseselectid}}" class="ml-3 mr-2">{{#str}}selectcourse, block_enrollment_chart{{/str}}</label>
+    <select id="{{courseselectid}}" class="custom-select course">
+      {{#courses}}
+        <option value="{{value}}" {{#selected}}selected{{/selected}}>{{label}}</option>
+      {{/courses}}
+    </select>
+  </div>
+
+  <div class="chart-frame">
+     <canvas id="{{canvasid}}" class="chart-canvas"></canvas>
+  </div>
+  
+  {{/hascourses}}
+
+  {{^hascourses}}
+    <div class="alert alert-info">{{nocoursesmessage}}</div>
+  {{/hascourses}}
+</div>

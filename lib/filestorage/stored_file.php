@@ -1211,4 +1211,26 @@ class stored_file {
         }
         return [false, false];
     }
+
+    /**
+     * Returns the accessrole of the file
+     *
+     * @return string
+     */
+    public function get_accessrole() {
+        return $this->file_record->accessrole;
+    }
+
+    /**
+     * Set accessrole
+     *
+     * @param int $accessrole accessrole
+     */
+    public function set_accessrole($accessrole) {
+        $filerecord = new stdClass;
+        $filerecord->accessrole = $accessrole;
+
+
+        $this->update($filerecord);
+    }
 }

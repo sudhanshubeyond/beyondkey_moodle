@@ -258,6 +258,27 @@ class core_files_renderer extends plugin_renderer_base {
         return $this->render_from_template('core/filemanager_fileselect', $context);
     }
 
+    protected function fm_js_template_fileselectlayoutcustom() {
+        // Get the list of available roles
+        $roles = role_get_names();
+        $options = [];
+        $options[] = ['id' => 0, 'name' => 'Available for all roles']; // Blank option with 
+        foreach ($roles as $roleid => $rolename) {
+            if ( $rolename->id == 6 || $rolename->id == 8) {
+                continue;
+            }
+            $options[] = ['id' => $rolename->id, 'name' => $rolename->localname]; // Build options array
+        }
+
+        $context = [
+                'helpicon' => $this->help_icon('setmainfile', 'repository'),
+                'licensehelpicon' => $this->create_license_help_icon_context(),
+                'columns' => true,
+                'roles' => $options
+        ];
+        return $this->render_from_template('core/filemanager_fileselect_custom', $context);
+    }
+
     /**
      * FileManager JS template for popup confirm dialogue window.
      *

@@ -20,7 +20,7 @@ class block_edvik_testimonial extends block_base {
                     <div class="col-md-8">
                         <div class="section-title style-eight">
                             <span class="fs-13 font-medium d-block text_primary">TESTIMONIAL</span>
-                            <h2 class="d-inline-block font-semibold position-relative mb-0">What Learners say about Edvik<img src="'.$CFG->wwwroot.'/theme/edvik/pix/section-title-shape-2.webp" alt="Shape" class="position-absolute bottom-0 end-0"></h2>
+                            <h2 class="d-inline-block font-semibold position-relative mb-0">What Our Learners Say About the Platform<img src="'.$CFG->wwwroot.'/theme/edvik/pix/section-title-shape-2.webp" alt="Shape" class="position-absolute bottom-0 end-0"></h2>
                         </div>
                     </div>
                     <div class="col-md-4 text-md-end mt-sm-20">
@@ -42,7 +42,7 @@ class block_edvik_testimonial extends block_base {
                                     </div>
                                     <div class="client-info">
                                         <h5 class="fs-18 font-regular">Jehny Watson</h5>
-                                        <span class="fs-15 text-paraTwo">Student</span>
+	                                        <span class="fs-15 text-paraTwo">Student</span>
                                     </div>
                                 </div>
                             </div>

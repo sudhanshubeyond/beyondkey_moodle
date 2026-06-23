@@ -644,6 +644,17 @@ function book_export_contents($cm, $baseurl) {
  * @since Moodle 3.0
  */
 function book_view($book, $chapter, $islastchapter, $course, $cm, $context) {
+    global $PAGE;
+    $PAGE->requires->js(new moodle_url('/mod/book/javascript/transcript.js'));
+    // Get the highlight color from the Moodle theme settings
+    $highlightColor = get_config('book', 'video_transcript_highlight_color');
+
+    // Pass the highlight color to JavaScript via js_init_code
+    $PAGE->requires->js_init_code("
+        window.MoodleSettings = {
+            transcriptHighlightColor: '$highlightColor'
+        };
+    ");
 
     // First case, we are just opening the book.
     if (empty($chapter)) {

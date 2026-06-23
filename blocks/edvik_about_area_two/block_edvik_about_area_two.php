@@ -52,9 +52,9 @@ class block_edvik_about_area_two extends block_base {
                 </div>';
             $this->config->style = 2;
             $this->config->top_title = 'OVER 6500+ COURSES AVAILABLE';
-            $this->config->title = 'Enhance your Skills with best Online courses';
+            $this->config->title = 'Enhance your skills through flexible, high-quality online learning experiences.';
             $this->config->title_shape = EDVIK_IMG .'section-title-shape-2.webp';
-            $this->config->body = 'Explore all of our courses and pick your suitable ones to enroll and start learning with us! Flexible easy to access learning opportunities.';
+            $this->config->body = 'Access a wide range of expert-led courses designed to help professionals grow in their careers anytime, anywhere.';
             $this->config->list_title1 = '';
             $this->config->list_content1 = '';
             $this->config->list_title2 = '';
@@ -105,14 +105,14 @@ class block_edvik_about_area_two extends block_base {
                                     <div class="section-title style-one">
                                         <span class="fs-13 font-medium d-block text_primary">'.format_text($this->config->top_title, FORMAT_HTML, array('filter' => true)).'</span>
                                         <h2 class="d-inline-block font-semibold position-relative mb-0">
-                                            '.format_text($this->config->title, FORMAT_HTML, array('filter' => true)).' ';
+                                            '.format_text('Enhance your skills through flexible, high-quality online learning experiences.', FORMAT_HTML, array('filter' => true)).' ';
                                             if($this->config->title_shape):
                                                 $text .= '
                                                 <img src="'.edvik_block_image_process($this->config->title_shape).'" class="position-absolute bottom-0 end-0" alt="'.strip_tags($this->config->title).'">';
                                             endif;
                                             $text .= '
                                         </h2>
-                                        <p>'.format_text($this->config->body, FORMAT_HTML, array('filter' => true)).'</p>
+                                        <p>'.format_text('Access a wide range of expert-led courses designed to help professionals grow in their careers anytime, anywhere.', FORMAT_HTML, array('filter' => true)).'</p>
                                     </div>
                                     <div class="feature-item-wrap d-flex flex-wrap justify-content-between">
                                         
@@ -125,7 +125,7 @@ class block_edvik_about_area_two extends block_base {
                                                 $text .= '
                                                 '.format_text($this->config->list_title1, FORMAT_HTML, array('filter' => true)).' </h4>
                                             <div>
-                                                <p class="mb-0">'.format_text($this->config->list_content1, FORMAT_HTML, array('filter' => true)).' </p>';
+                                                <p class="mb-0">'.format_text('Learn at your own pace with 24/7 access to course materials.', FORMAT_HTML, array('filter' => true)).' </p>';
                                                 if($this->config->btn):
                                                     $text .= '
                                                     <a href="'.$this->config->btn_link.'" class="link style-one d-inline-block fs-15 font-medium">'.format_text($this->config->btn, FORMAT_HTML, array('filter' => true)).'<i class="ri-arrow-right-line"></i></a>';
@@ -144,7 +144,7 @@ class block_edvik_about_area_two extends block_base {
                                                 '.format_text($this->config->list_title2, FORMAT_HTML, array('filter' => true)).'
                                                 </h4>
                                             <div>
-                                                <p class="mb-0">'.format_text($this->config->list_content2, FORMAT_HTML, array('filter' => true)).'</p>
+                                                <p class="mb-0">'.format_text('Access training from any device — at work, home, or on the go.', FORMAT_HTML, array('filter' => true)).'</p>
                                             </div>
                                         </div>
                                     </div>

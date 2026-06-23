@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<XMLDB PATH="local/proctoringapi/db" VERSION="2026033100" COMMENT="Proctoring API table">
+<TABLES>
+<TABLE NAME="local_proctoring_results" COMMENT="Stores proctoring risk data">
+<FIELDS>
+<FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
+<FIELD NAME="studentid" TYPE="int" LENGTH="10" NOTNULL="true"/>
+<FIELD NAME="attemptid" TYPE="int" LENGTH="10" NOTNULL="true"/>
+<FIELD NAME="quizid" TYPE="int" LENGTH="10" NOTNULL="true"/>
+<FIELD NAME="focus_score_percent" TYPE="number" LENGTH="10" NOTNULL="false"/>
+<FIELD NAME="cheating_risk_percent" TYPE="number" LENGTH="10" NOTNULL="false"/>
+<FIELD NAME="risk_level" TYPE="char" LENGTH="20" NOTNULL="false"/>
+<FIELD NAME="finalobservations" TYPE="text" NOTNULL="false"/>
+<FIELD NAME="errormessage" TYPE="text" NOTNULL="true"/>
+<FIELD NAME="timecreated" TYPE="int" LENGTH="10" NOTNULL="true"/>
+</FIELDS>
+<KEYS>
+<KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+</KEYS>
+</TABLE>
+</TABLES>
+</XMLDB>

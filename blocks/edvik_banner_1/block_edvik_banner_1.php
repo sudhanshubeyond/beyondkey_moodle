@@ -15,8 +15,8 @@ class block_edvik_banner_1 extends block_base {
 
         if (empty($this->config)) {
             $this->config = new \stdClass();
-            $this->config->title = 'Start distant learning free from the world’s best institutions';
-            $this->config->body = 'Flexible easy to access learning opportunities can bring a significant change in how individuals prefer to learn! The Edvik can offer you to enjoy the beauty of eLearning!';
+            $this->config->title = 'eLearning Solutions';
+            $this->config->body = 'Deliver impactful, flexible learning experiences. Empower individual growth with scalable digital training, accessible anytime, anywhere.';
             $this->config->search_placeholder = 'What do you want to learn today?';
             $this->config->btn_icon = 'ri-search-line';
             $this->config->btn = 'Search Now';
@@ -121,7 +121,7 @@ class block_edvik_banner_1 extends block_base {
                         <div class="col-xxl-8 col-xl-10 col-lg-10 pe-xxl-0">
 
                             <h1 class="font-semibold position-relative ls-1">
-                                '.format_text($this->config->title, FORMAT_HTML, array('filter' => true)).' ';
+                                '.format_text('eLearning Solutions', FORMAT_HTML, array('filter' => true)).' ';
                                 
                                 if($this->config->title_shape):
                                     $text .= '<img src="'.edvik_block_image_process($this->config->title_shape).'" alt="">';
@@ -129,12 +129,12 @@ class block_edvik_banner_1 extends block_base {
                                 $text .= '
                             </h1>
 
-                            <p class="text-tandora">'.format_text($this->config->body, FORMAT_HTML, array('filter' => true)).'</p>';
+                            <p class="text-tandora">'.format_text('Deliver impactful, flexible learning experiences. Empower individual growth with scalable digital training, accessible anytime, anywhere.', FORMAT_HTML, array('filter' => true)).'</p>';
 
                             if($this->config->search_placeholder || $this->config->btn):
                                 $text .= '
                                 <form action="'.$url->out().'" class="search-form position-relative">
-                                    <input type="search" id="searchform-search" name="q" placeholder="'.format_text($this->config->search_placeholder, FORMAT_HTML, array('filter' => true)).'" class="bg-white border-0 w-100 h-60 round-4 fs-14 ls-1">
+                                    <input type="search" id="searchform-search" name="q" placeholder="'.format_text('Search courses, skills, or training modules', FORMAT_HTML, array('filter' => true)).'" class="bg-white border-0 w-100 h-60 round-4 fs-14 ls-1">
                                     <button type="submit" class="bg-title round-4 border-0 fs-15 position-absolute text-white">'.format_text($this->config->btn, FORMAT_HTML, array('filter' => true)).'<i class="'.$this->config->btn_icon.'"></i></button>
                                 </form>';
                             endif;  
@@ -152,7 +152,7 @@ class block_edvik_banner_1 extends block_base {
                                     }
                                     $text .= '
                                 </ul>
-                                <p class="mb-0 text-tandora">'.format_text($this->config->support_text, FORMAT_HTML, array('filter' => true)).'</p>
+                                <p class="mb-0 text-tandora">'.format_text('Need help? Contact our <a href="'.$CFG->wwwroot .'/course'.'" class="link style-two">Administrator</a> Tell us about your query.', FORMAT_HTML, array('filter' => true)).'</p>
                             </div>';
 
                             if($this->config->banner_btn):

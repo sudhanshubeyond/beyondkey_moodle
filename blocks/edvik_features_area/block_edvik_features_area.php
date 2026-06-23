@@ -28,8 +28,8 @@ class block_edvik_features_area extends block_base {
                                     <img src="'.$CFG->wwwroot.'/theme/edvik/pix/icons/calender-2.svg" alt="Image" class="Icons">
                                 </div>
                                 <div class="feature-info">
-                                    <h3 class="font-medium"><a href="'.$CFG->wwwroot.'/course/index.php?categoryid=2">Earn certificates and degrees</a></h3>
-                                    <p class="mb-0">Explore all of our courses and pick your suitable ones to enroll and start learning.</p>
+                                    <h3 class="font-medium"><a href="'.$CFG->wwwroot.'/course/index.php?categoryid=2">Earn Certificates & Credentials</a></h3>
+                                    <p class="mb-0">Receive verified certificates upon course completion to showcase your professional development and enhance your resume.</p>
                                 </div>
                                 <a href="'.$CFG->wwwroot.'/course/index.php?categoryid=2" class="feature-link d-flex flex-column align-items-center justify-content-center rounded-circle position-absolute bg-title text-white"><i class="ri-arrow-right-line"></i></a>
                             </div>
@@ -40,8 +40,8 @@ class block_edvik_features_area extends block_base {
                                     <img src="'.$CFG->wwwroot.'/theme/edvik/pix/icons/memory-2.svg" alt="Image" class="Icons">
                                 </div>
                                 <div class="feature-info">
-                                    <h3 class="font-medium"><a href="'.$CFG->wwwroot.'/course/index.php?categoryid=2">In-Demand Trendy Topics</a></h3>
-                                    <p class="mb-0">Explore all of our courses and pick your suitable ones to enroll and start learning.</p>
+                                    <h3 class="font-medium"><a href="'.$CFG->wwwroot.'/course/index.php?categoryid=2">In-Demand & Trending Topics</a></h3>
+                                    <p class="mb-0">Access a wide variety of courses covering today’s most sought-after skills from digital marketing to data science and beyond.</p>
                                 </div>
                                 <a href="'.$CFG->wwwroot.'/course/index.php?categoryid=2" class="feature-link d-flex flex-column align-items-center justify-content-center rounded-circle position-absolute bg-title text-white"><i class="ri-arrow-right-line"></i></a>
                             </div>
@@ -52,8 +52,8 @@ class block_edvik_features_area extends block_base {
                                     <img src="'.$CFG->wwwroot.'/theme/edvik/pix/icons/segmant.svg" alt="Image" class="Icons">
                                 </div>
                                 <div class="feature-info">
-                                    <h3 class="font-medium"><a href="'.$CFG->wwwroot.'/course/index.php?categoryid=2">Segment Your Learning</a></h3>
-                                    <p class="mb-0">Explore all of our courses and pick your suitable ones to enroll and start learning.</p>
+                                    <h3 class="font-medium"><a href="'.$CFG->wwwroot.'/course/index.php?categoryid=2">Personalized Learning Paths</a></h3>
+                                    <p class="mb-0">Segment your learning journey based on your role, department, or career goals. Progress at your own pace with tailored content.</p>
                                 </div>
                                 <a href="'.$CFG->wwwroot.'/course/index.php?categoryid=2" class="feature-link d-flex flex-column align-items-center justify-content-center rounded-circle position-absolute bg-title text-white"><i class="ri-arrow-right-line"></i></a>
                             </div>
@@ -64,8 +64,8 @@ class block_edvik_features_area extends block_base {
                                     <img src="'.$CFG->wwwroot.'/theme/edvik/pix/icons/learning-2.svg" alt="Image" class="Icons">
                                 </div>
                                 <div class="feature-info">
-                                    <h3 class="font-medium"><a href="'.$CFG->wwwroot.'/course/index.php?categoryid=2">Always Interactive Learning</a></h3>
-                                    <p class="mb-0">Explore all of our courses and pick your suitable ones to enroll and start learning.</p>
+                                    <h3 class="font-medium"><a href="'.$CFG->wwwroot.'/course/index.php?categoryid=2">Interactive & Engaging Experience</a></h3>
+                                    <p class="mb-0">Enjoy a modern, user-friendly interface designed to maximize engagement through quizzes, videos, and collaborative tools.</p>
                                 </div>
                                 <a href="'.$CFG->wwwroot.'/course/index.php?categoryid=2" class="feature-link d-flex flex-column align-items-center justify-content-center rounded-circle position-absolute bg-title text-white"><i class="ri-arrow-right-line"></i></a>
                             </div>
