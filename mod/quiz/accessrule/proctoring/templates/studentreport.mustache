@@ -99,19 +99,36 @@
                 </tr>
             </thead>
             <tbody id = "proctoring-table-body"  >
-                {{#data}}
-                <tr class="p-0 m-0">
-                    <td class="p-0 m-0">{{name}}</td>
-                    <td class="p-0 m-0">
+               
+            {{#data}}
+            <tr>
+                <td colspan="2">
+                    <h6>{{attemptname}}</h6>
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="2">
+                    {{#images}}
                         {{#image_url}}
-                            <a href="{{image_url}}" data-lightbox="proc-images" data-title="{{name}}">
-                                <img id="{{img_id}}" class="proctoring-border-color-{{border_color}}"  width="100" 
-                                    src="{{image_url}}" alt="{{name}}" data-lightbox="{{lightbox_data}}">
+                            <a href="{{image_url}}"
+                                data-lightbox="attempt-{{attemptname}}"
+                                data-title="{{firstname}} {{lastname}}">
+
+                                <img id="{{img_id}}"
+                                    class="proctoring-border-color-{{border_color}}"
+                                    width="100"
+                                    src="{{image_url}}"
+                                    alt="{{firstname}} {{lastname}}"
+                                    data-lightbox="{{lightbox_data}}">
                             </a>
                         {{/image_url}}
-                    </td>
-                </tr>
-                {{/data}}
+                    {{/images}}
+                </td>
+            </tr>
+            {{/data}}
+
+
             </tbody>
             </table>
         </div>

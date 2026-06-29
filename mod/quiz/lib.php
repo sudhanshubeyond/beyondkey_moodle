@@ -1678,6 +1678,14 @@ function quiz_extend_settings_navigation(settings_navigation $settings, navigati
         $beforekey = $keys[$i + 1];
     }
 
+    // Hemanth added here for Proctoring AI report start ---
+    if (has_capability('mod/quiz:viewreports', $settings->get_page()->cm->context)) {
+        $url = new moodle_url('/local/proctoringapi/proctoring_ai_report.php', ['cmid' => $settings->get_page()->cm->id]);
+
+        $quiznode->add(get_string('proctoringaireport', 'local_proctoringapi'), $url, navigation_node::TYPE_SETTING);
+    }
+    // Hemanth added here for Proctoring AI report  ---
+
     if (has_any_capability(['mod/quiz:manageoverrides', 'mod/quiz:viewoverrides'], $settings->get_page()->cm->context)) {
         $url = new moodle_url('/mod/quiz/overrides.php', ['cmid' => $settings->get_page()->cm->id, 'mode' => 'user']);
         $node = navigation_node::create(get_string('overrides', 'quiz'),

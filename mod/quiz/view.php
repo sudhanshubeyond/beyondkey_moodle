@@ -137,23 +137,28 @@ $gradeitem = grade_item::fetch([
 ]);
 
 if ($gradeitem) {
-    if ($CFG->recovergradesdefault && $gradeitem->refresh_grades($USER->id)) {
-        $grade = $gradeitem->get_grade($USER->id, false);
+    if ($CFG->recovergradesdefault) {
+        $gradeitem->refresh_grades($USER->id);
+    }
+
+    $grade = $gradeitem->get_grade($USER->id, false);
+
+    if ($grade) {
         if ($grade->overridden) {
             if ($gradeitem->needsupdate) {
-                // It is Error, but let's be consistent with the old code.
                 $mygrade = 0;
             } else {
                 $mygrade = $grade->finalgrade;
             }
             $mygradeoverridden = true;
+        } else {
+            $mygrade = $grade->finalgrade;
         }
 
         if (!empty($grade->feedback)) {
             $gradebookfeedback = $grade->feedback;
         }
     } else {
-        // It is Error, but let's be consistent with the old code.
         $mygrade = 0;
     }
 }

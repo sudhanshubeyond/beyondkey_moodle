@@ -1,0 +1,57 @@
+<h3 class="mb-3">Proctoring AI Report</h3>
+
+<div class="row mb-3">
+
+    <div class="col-md-6">
+        <input type="text"
+               id="searchbox"
+               class="form-control"
+               placeholder="Search student, attempt or risk...">
+    </div>
+
+    <div class="col-md-3">
+        <select id="perpage" class="form-control">
+            <option value="10">10 per page</option>
+            <option value="25">25 per page</option>
+            <option value="50">50 per page</option>
+            <option value="100">100 per page</option>
+        </select>
+    </div>
+
+</div>
+
+<!-- TABLE -->
+<table id="proctoring-table" class="generaltable table table-striped">
+
+    <thead>
+        <tr>
+            <th data-sort="fullname">Student</th>
+            <th data-sort="attemptid">Attempt</th>
+            <th data-sort="focus_score_percent">Focus</th>
+            <th data-sort="cheating_risk_percent">Risk</th>
+            <th data-sort="risk_level">Risk Level</th>
+            <th data-sort="finalobservations">Observations</th>
+            <th data-sort="timecreated">Date</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <!-- JS will inject rows here -->
+    </tbody>
+
+</table>
+
+<!-- PAGINATION -->
+<div class="d-flex justify-content-between align-items-center mt-3">
+
+    <button id="prevpage" class="btn btn-secondary">
+        Previous
+    </button>
+
+    <span id="pageinfo" class="font-weight-bold"></span>
+
+    <button id="nextpage" class="btn btn-secondary">
+        Next
+    </button>
+
+</div>

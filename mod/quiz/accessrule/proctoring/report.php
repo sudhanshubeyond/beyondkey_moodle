@@ -430,17 +430,32 @@ if (
         $thresholdvalue = (int) quizaccess_proctoring_get_proctoring_settings('threshold');
         $studentdata = [];
         foreach ($sqlexecuted as $info) {
-                $row = [];
-                $row['firstname'] = $info->firstname;
-                $row['lastname'] = $info->lastname;
-                $row['image_url'] = $info->webcampicture;
-                $row['border_color'] = $info->awsflag == 2 && $info->awsscore > $thresholdvalue ? 'green' :
-                                        ($info->awsflag == 2 && $info->awsscore < $thresholdvalue ? 'red' :
-                                        ($info->awsflag == 3 && $info->awsscore < $thresholdvalue ? 'yellow' : 'none'));
-                $row['img_id'] = 'reportid-' . $info->reportid;
-                $row['lightbox_data'] = basename($info->webcampicture, '.png');
-                $studentdata[] = $row;
+
+// Update this for Attempt wise images report start --
+            $attemptid = $info->status;
+
+            if (!isset($studentdata[$attemptid])) {
+                $studentdata[$attemptid] = [
+                    'attemptname' => 'Attempt ' . $attemptid,
+                    'images' => []
+                ];
+            }
+
+            $studentdata[$attemptid]['images'][] = [
+                'firstname' => $info->firstname,
+                'lastname' => $info->lastname,
+                'image_url' => $info->webcampicture,
+                'border_color' => $info->awsflag == 2 && $info->awsscore > $thresholdvalue ? 'green' :
+                                    ($info->awsflag == 2 && $info->awsscore < $thresholdvalue ? 'red' :
+                                    ($info->awsflag == 3 && $info->awsscore < $thresholdvalue ? 'yellow' : 'none')),
+                'img_id' => 'reportid-' . $info->reportid,
+                'lightbox_data' => basename($info->webcampicture, '.png'),
+            ];
         }
+        $studentdata = array_values($studentdata);
+
+// Update this for Attempt wise images report end --
+
         $analyzeparam = ['studentid' => $studentid, 'cmid' => $cmid, 'courseid' => $courseid, 'reportid' => $reportid];
         $analyzeurl = new moodle_url('/mod/quiz/accessrule/proctoring/analyzeimage.php', $analyzeparam);
         $analyzeurl = preg_replace('/&amp;/', '&', $analyzeurl);
