@@ -1,0 +1,124 @@
+define([
+    "jquery",
+    "core/ajax",
+    "core/templates",
+    "core/notification",
+    "core/str",
+], function ($, ajax, templates, notification, str) {
+    return /** @alias module:block_programs/programs */ {
+        /**
+         *
+         * @method int]it
+         */
+        init: function (coursemoduleid, forumtype, courseid) {
+          
+            
+            var cmid = coursemoduleid;
+            var sesskey = M.cfg.sesskey;
+            // Inject a style rule that overrides the inline display:none,
+            // works no matter when #loadaigrade gets rendered into the DOM.
+            // Check server-side whether AI grading should be shown for this cmid
+            $.ajax({
+                url: M.cfg.wwwroot + '/local/forum/ajax.php',
+                method: 'POST',
+                data: {
+                    action: 'displayai',
+                    cmid: cmid,
+                    sesskey: sesskey
+                },
+                success: function (data) {
+                    console.log("sudhanshu");
+                    console.log(data);
+                    
+                    if (data.status == 1) {
+                        const style = document.createElement('style');
+                        style.textContent = '#loadaigrade { display: inline-block !important; }';
+                        document.head.appendChild(style);
+                    }
+                },
+                error: function (err) {
+                    console.log('AJAX error: ' + err.statusText);
+                }
+            });
+
+
+
+            $(document).on("click", "#loadaigrade", function (e) {
+                var userid = $(this).parent().parent().parent().find('.user-full-name').attr('data-userid');
+                $.ajax({
+                    url: M.cfg.wwwroot + '/local/forum/ajax.php',
+                    method: 'POST',
+                    data: {
+                        action: 'getgrades',
+                        cmid: cmid,
+                        userid: userid,
+                        sesskey: M.cfg.sesskey
+                    },
+                    success: function (data) {
+                        try {
+                            if (data.status) {
+                                if (data.errormessage !== null) {
+                                    const message = 'There is some issue with following message "' +
+                                            `<strong>${data.errormessage}</strong>` + '" kindly grade this manually';
+                                    notification.alert('Grading Issue', message, 'OK');
+                                } else {
+
+                                    if (data.rubricbreakdown !== null && data.rubricbreakdown != '') {
+                                        const rubricdata = JSON.parse(data.rubricbreakdown);
+                                        rubricdata.forEach(item => {
+                                            const elementID = `advancedgrading-criteria-${item.criterionid}-levels-${item.selectedlevelid}-definition`;
+                                            const feedbckelement = `advancedgrading-criteria-${item.criterionid}-remark`;
+
+                                            const levelElement = document.getElementById(elementID);
+                                            const remarkTextarea = document.getElementById(feedbckelement);
+
+                                            console.warn(`Textarea not found for criterion ${item.criterionid}`);
+                                            console.warn(`Element with ID '${elementID}' not found.`);
+
+                                            if (remarkTextarea) {
+                                                remarkTextarea.value = item.feedback;
+                                                remarkTextarea.style.display = 'block'; // optional: show if hidden
+                                            } else {
+                                                console.warn(`Textarea not found for criterion ${item.criterionid}`);
+                                            }
+
+                                            if (levelElement) {
+                                                levelElement.click();
+                                            } else {
+                                                console.warn(`Element with ID '${elementID}' not found.`);
+                                            }
+                                        });
+
+                                        $('#loadaigrademsg').text('AI grading is loaded.');
+                                        $('#loadaigrademsg').fadeIn();
+                                        setTimeout(function () {
+                                            $('#loadaigrademsg').fadeOut();
+                                        }, 4000);
+                                    } else if (data.gradingtype == 'simple') {
+                                        $('#loadaigrademsg').text('AI grading is loaded.');
+                                        $('#loadaigrademsg').fadeIn();
+                                        $('[name="grade"]').val(data.grade);
+                                        setTimeout(function () {
+                                            $('#loadaigrademsg').fadeOut();
+                                        }, 4000);
+                                    }
+                                }
+                            } else {
+                                $('#loadaigrademsg').text(data.errormessage);
+                                $('#loadaigrademsg').fadeIn();
+                                setTimeout(function () {
+                                    $('#loadaigrademsg').fadeOut();
+                                }, 4000);
+                            }
+                        } catch (err) {
+                            console.log('There is some issue please try again later');
+                        }
+                    },
+                    error: function (err) {
+                        console.log('AJAX error: ' + err.statusText);
+                    }
+                });
+            });
+        },
+    };
+});
