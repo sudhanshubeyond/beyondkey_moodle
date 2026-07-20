@@ -209,6 +209,22 @@ class mod_forum_mod_form extends moodleform_mod {
 
         // Add the whole forum grading options.
         $this->add_forum_grade_settings($mform, 'forum');
+        
+        //code added from beyond Key
+         // Teacher Approval and AI Grading settings grouped
+         $mform->addElement('header', 'teacherapproval', 
+        get_string('teacherapprovalsettings', 'local_forum'));
+         // Teacher Approval setting
+         $mform->addElement('selectyesno', 'teacher_approval', 
+        get_string('teacherapprovalenabled', 'local_forum'));
+         $mform->addHelpButton('teacher_approval', 'teacherapprovalenabled', 'local_forum');
+         $mform->setDefault('teacher_approval', 1);
+         // AI Grading setting
+         $mform->addElement('selectyesno', 'ai_grading', 
+        get_string('aigradingenabled', 'local_forum'));
+         $mform->addHelpButton('ai_grading', 'aigradingenabled', 'local_forum');
+         $mform->setDefault('ai_grading', 1);
+        //end of code added from beyond key
 
         $this->standard_coursemodule_elements();
 //-------------------------------------------------------------------------------

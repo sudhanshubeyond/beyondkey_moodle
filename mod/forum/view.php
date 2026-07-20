@@ -258,5 +258,8 @@ switch ($forum->get_type()) {
         $discussionsrenderer = $rendererfactory->get_discussion_list_renderer($forum);
         echo $discussionsrenderer->render($USER, $cm, $groupid, $sortorder, $pageno, $pagesize, $displaymode, false);
 }
+//code added from Beyond Key
+$PAGE->requires->js_call_amd('local_forum/grading_actions_ajax', 'init', array($forum->get_course_module_record()->id, $forum->get_type(), $course->id));
+//end of code added from beyond key
 
 echo $OUTPUT->footer();

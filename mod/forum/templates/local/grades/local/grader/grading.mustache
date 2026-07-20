@@ -94,6 +94,8 @@
             </div>
             <div class="body-container position-relative d-flex flex-column" data-region="body-container">
                 <div class="grader-grading-panel-display pt-3" data-region="grading-panel-container">
+                    <button id="loadaigrade" class="btn btn-primary font-weight-bold ml-sm-2 px-4 mb-3 mr-2" style ="display:none" data-action="loadaigrade" >Load AI grading</button>
+                    <p id="loadaigrademsg" style="display: initial;vertical-align: super;"></p>
                     <h4 class="mb-0 h5 px-3 font-weight-normal">
                         {{#pix}} i/grading, core {{/pix}}{{#str}} gradingmodulename, core_grades, {{moduleName}} {{/str}}
                     </h4>
