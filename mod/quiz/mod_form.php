@@ -143,6 +143,22 @@ class mod_quiz_mod_form extends moodleform_mod {
         if ($this->get_max_attempts_for_any_override() < 2) {
             $mform->hideIf('grademethod', 'attempts', 'eq', 1);
         }
+        //code added from beyond key
+         // Teacher Approval and AI Grading settings grouped
+         $mform->addElement('header', 'teacherapproval', 
+        get_string('teacherapprovalsettings', 'local_quiz'));
+         // Teacher Approval setting
+         $mform->addElement('selectyesno', 'teacher_approval', 
+        get_string('teacherapprovalenabled', 'local_quiz'));
+         $mform->addHelpButton('teacher_approval', 'teacherapprovalenabled', 
+        'local_quiz');
+         $mform->setDefault('teacher_approval', 1);
+         // AI Grading setting
+         $mform->addElement('selectyesno', 'ai_grading', get_string('aigradingenabled', 
+        'local_quiz'));
+         $mform->addHelpButton('ai_grading', 'aigradingenabled', 'local_quiz');
+         $mform->setDefault('ai_grading', 1);
+         //end of code from beyond key
 
         // -------------------------------------------------------------------------------
         $mform->addElement('header', 'layouthdr', get_string('layout', 'quiz'));

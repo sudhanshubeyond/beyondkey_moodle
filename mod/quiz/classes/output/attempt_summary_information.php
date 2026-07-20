@@ -196,7 +196,8 @@ class attempt_summary_information implements renderable, named_templatable {
         ?int $pageforlinkingtootherattempts = null,
         ?bool $showall = null,
     ): static {
-        global $DB, $USER;
+        // $CFG added by beyond Key
+        global $DB, $USER, $CFG;
         $summary = new static();
 
         // Prepare summary information about the whole attempt.
@@ -254,6 +255,8 @@ class attempt_summary_information implements renderable, named_templatable {
                 userdate($attempt->timefinish));
             $summary->add_item('timetaken', get_string('attemptduration', 'quiz'), $timetaken);
         }
+        
+        
 
         if (!empty($overtime)) {
             $summary->add_item('overdue', get_string('overdue', 'quiz'), $overtime);
@@ -268,10 +271,21 @@ class attempt_summary_information implements renderable, named_templatable {
         }
 
         // Feedback if there is any, and the user is allowed to see it now.
+        //code changed here by Beyond Key
+        require_once($CFG->dirroot . '/local/quiz/locallib.php');
+        $aifeedback = get_overall_aifeedback($attemptid, $attemptobj->get_userid());
         $feedback = $attemptobj->get_overall_feedback($grade);
-        if ($options->overallfeedback && $feedback) {
-            $summary->add_item('feedback', get_string('feedback', 'quiz'), $feedback);
-        }
+        if ($options->overallfeedback && $feedback || $aifeedback) {
+            if ($aifeedback) {
+        $feedback = $aifeedback;
+
+    }
+    // end of code changed
+
+    $summary->add_item('feedback', get_string('feedback', 'quiz'), $feedback);
+
+}
+ 
 
         return $summary;
     }

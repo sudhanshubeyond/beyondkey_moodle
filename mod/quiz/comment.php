@@ -27,6 +27,9 @@ use mod_quiz\output\attempt_summary_information;
 
 require_once('../../config.php');
 require_once('locallib.php');
+//code added from beyond key
+require_once($CFG->dirroot . '/local/quiz/locallib.php');
+//end of code added from beyond key
 
 $attemptid = required_param('attempt', PARAM_INT);
 $slot = required_param('slot', PARAM_INT); // The question number in the attempt.
@@ -112,6 +115,17 @@ echo html_writer::div($output->render($summary), 'mb-3');
 if ($submiterror) {
     echo $output->notification(get_string('savemanualgradingfailed', 'quiz'), \core\output\notification::NOTIFY_ERROR);
 }
+
+//code added froom Beyond Key
+$quiz = $DB->get_record('quiz', ['id' => $attemptobj->get_quizid()], 'id, 
+teacher_approval');
+$isgraded = ai_grade_status($attemptobj->get_quizid(), $attemptobj->get_attemptid(), $attemptobj->get_userid());
+$question = $attemptobj->get_question_attempt($slot)->get_question(); 
+if ($question->get_type_name() == 'essay' && $isgraded && $quiz->teacher_approval == 1) {
+echo '<button class="btn btn-primary ml-0 mb-3" name="my_button" id="id_fill_ai_grade" data-qid="'.$attemptobj->get_question_attempt($slot)->get_question_id().'" type="button">Load AI Grading</button>';
+}
+//end of code added from beyond key
+
 // Print the comment form.
 echo '<form method="post" class="mform" id="manualgradingform" action="' .
         $CFG->wwwroot . '/mod/quiz/comment.php">';
@@ -136,6 +150,8 @@ echo $attemptobj->render_question_for_commenting($slot);
 <?php
 echo '</form>';
 $PAGE->requires->js_init_call('M.mod_quiz.init_comment_popup', null, false, quiz_get_js_module());
-
+//code added from beyond key
+$PAGE->requires->js_call_amd('local_quiz/grading_actions_ajax', 'init', array($attemptobj->get_attemptid()));
+//end of code added from beyond key
 // End of the page.
 echo $output->footer();
