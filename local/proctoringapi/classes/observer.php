@@ -11,17 +11,23 @@ class observer {
 
         require_once($CFG->libdir . '/filelib.php');
 
-        // error_log('attempt_started event triggered');
-
         $cmid = $event->contextinstanceid;
 
         $curl = new \curl();
 
-        $payload = json_encode(['quizID' => $cmid, 'createdOn' => time(), 'modifiedOn' => time()]);
+        $curl->setopt([
+            'CURLOPT_HTTPHEADER' => [
+                'Content-Type: application/json'
+            ]
+        ]);
 
-        $response = $curl->post(https://proctoringlms.azurewebsites.net/api/Proctoring/StartQuiz, $payload,
-            ['CURLOPT_HTTPHEADER' => ['Content-Type: application/json']]
+        $payload = json_encode(['quizID' => $cmid, 'status' => '', 
+                'createdOn' => gmdate('Y-m-d\TH:i:s.v\Z'),
+                'modifiedOn' => gmdate('Y-m-d\TH:i:s.v\Z'),
+                'studentCount' => 0]);
+
+        $response = $curl->post(
+            'https://proctoringlms.azurewebsites.net/api/Proctoring/StartQuiz', $payload
         );
-
     }
 }
