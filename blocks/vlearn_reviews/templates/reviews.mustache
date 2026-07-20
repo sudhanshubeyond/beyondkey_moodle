@@ -1,0 +1,84 @@
+<div class="toreview-completion-section" id="learner-completion-section-1"  >
+    <ul class="border-bottom mx-0 p-0 mb-1 d-flex justify-content-start  ">
+        <li class="d-inline-block  pr-3 toreview-tab ">
+            <a href="#tab1" class="d-inline-block">
+                <img src="pix/assignemnt-accent-blue.svg" alt="" width=""  class="d-inline-block mr-1" />
+                    Assignments
+                <span>({{to_reviews}})</span>
+            </a>
+        </li>
+    </ul>
+
+    <div class="activity-table">
+   <table> <tbody>
+        <tr>
+            <th width="250">Activity</th>
+            <th>Student Name</th>
+            <th>Grade(AI)</th>
+            <th>Feedback(Ai)</th>
+            <th>Action</th>
+        </tr>
+
+{{#activity}}
+        <tr class="all-to-review-list" >
+
+
+            <td>
+                <h5>{{&course_name}}</h5>
+                <p>{{&name}}</p>
+            </td>
+            <td>{{studentname}}</td>
+            <td>{{grade}}</td>
+            <td >
+                <div class="d-inline-block pending" style="position: relative;" >
+                    <span class="d-block font-13 clickable-feedback" style="cursor: pointer;" >
+        {{feedback}}
+    </span>
+
+                    <div class="feedback-box" style="display: none;">
+{{&feedbackdesc}}
+</div>
+                </div>
+            </td>
+            <td >
+                <div class="d-inline-block action" >
+                    <!--<span class="desktop-none mb-2  mobile-block font-14 black-light-color">Action</span>-->
+                    <a href={{&gradeurl}} class="d-flex align-items-center w-100 " >
+                        <span class="d-block font-12 text-right accent-blue font-w-600" >Review 
+
+                                    </span>
+                        <i class="fa fa-angle-right ml-1 d-inline-block font-13 font-weignt-bolder" style="color: #006fcb !important;"></i>
+                    </a>
+                </div>
+            </td>
+        </tr>
+{{/activity}}
+		
+    </tbody>
+    </table>
+</div>
+
+    {{#allreviewsurl}}
+        <div class="text-center w-100 ">
+            <a class="font-w-600 view-all d-block font-14" href="{{allreviewsurl}}">View all</a>
+        </div>
+    {{/allreviewsurl}}
+</div>
+
+{{#js}}
+document.querySelectorAll('.clickable-feedback').forEach(trigger => {
+    const box = trigger.nextElementSibling;
+
+    trigger.addEventListener('click', (e) => {
+        e.stopPropagation();
+        box.style.display = box.style.display === 'block' ? 'none' : 'block';
+    });
+
+    // Close on outside click
+    document.addEventListener('click', (e) => {
+        if (!box.contains(e.target) && e.target !== trigger) {
+            box.style.display = 'none';
+        }
+    });
+});
+{{/js}}
