@@ -1580,6 +1580,11 @@ class assign {
         if (empty($update->markingworkflow) || empty($update->blindmarking)) {
             $update->markinganonymous = 0;
         }
+        
+        //code added from Beyond Key
+        $update->teacher_approval = $formdata->teacher_approval;
+        $update->ai_grading = $formdata->ai_grading;
+        //end of code added from Beyond Key
 
         $result = $DB->update_record('assign', $update);
         $this->instance = $DB->get_record('assign', array('id'=>$update->id), '*', MUST_EXIST);

@@ -474,6 +474,29 @@ class renderer extends \plugin_renderer_base {
         $o = '';
         $o .= $this->output->container_start('submissionstatustable');
         $o .= $this->output->heading(get_string('submission', 'assign'), 3);
+        
+        //code added from Beyond Key
+        //Changes by beyondkey team for AI grading
+        global $CFG;
+        require_once($CFG->dirroot . '/local/assign_submission/lib.php');
+        $assignmentrecord = get_assign_record($status->submission->assignment);
+        if (ai_grade_exist($status->coursemoduleid, $status->submission->userid) && 
+        (int)$assignmentrecord->teacher_approval === 1) {
+        if (show_ai_grading($status->coursemoduleid, $status->submission->userid)) {
+         $o .= '<button type="button" name="fill_ai_grade" id="id_fill_ai_grade" 
+        class="btn btn-primary" style="margin-bottom: 5px;">' . 
+        get_string('ai_grading','local_assign_submission') . '</button>';
+         } else {
+         $o .= '<button type="button" name="fill_ai_grade" id="id_fill_ai_grade" 
+        class="btn btn-primary" 
+         style="margin-bottom: 5px;" disabled 
+         title=" AI at work">
+         <span class="spinner-border spinner-border-sm me-2"></span>' 
+         . get_string('ai_work','local_assign_submission') . '</button>';
+         }
+        }
+    //Changes by beyondkey team for AI grading end
+
 
         if ($status->teamsubmissionenabled) {
             $group = $status->submissiongroup;

@@ -47,6 +47,10 @@ $PAGE->set_url($url);
 // Update module completion status.
 $assign->set_module_viewed();
 
+//code added from Beyond Key
+$PAGE->requires->js_call_amd('local_assign_submission/grading_actions_ajax', 'init', array());
+// End of code added from Beyond Key
+
 // Apply overrides.
 $assign->update_effective_access($USER->id);
 

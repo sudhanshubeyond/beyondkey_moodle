@@ -232,7 +232,25 @@ class mod_assign_mod_form extends moodleform_mod {
         $name = get_string('markingworkflow', 'assign');
         $mform->addElement('selectyesno', 'markingworkflow', $name);
         $mform->addHelpButton('markingworkflow', 'markingworkflow', 'assign');
-
+        
+        //code added from Beyond Key
+        // Teacher Approval and AI Grading settings grouped
+        $mform->addElement('header', 'teacherapproval', 
+        get_string('teacherapprovalsettings', 'local_assign_submission'));
+        // Teacher Approval setting
+        $mform->addElement('selectyesno', 'teacher_approval', 
+        get_string('teacherapprovalenabled', 'local_assign_submission'));
+        $mform->addHelpButton('teacher_approval', 'teacherapprovalenabled_help', 
+        'local_assign_submission');
+        $mform->setDefault('teacher_approval', 1);
+        // AI Grading setting
+        $mform->addElement('selectyesno', 'ai_grading', get_string('aigradingenabled', 
+        'local_assign_submission'));
+        $mform->addHelpButton('ai_grading', 'aigradingenabled_help', 
+        'local_assign_submission');
+        $mform->setDefault('ai_grading', 1);
+        //end of code added from beyond key
+        
         $name = get_string('markingallocation', 'assign');
         $mform->addElement('selectyesno', 'markingallocation', $name);
         $mform->addHelpButton('markingallocation', 'markingallocation', 'assign');
