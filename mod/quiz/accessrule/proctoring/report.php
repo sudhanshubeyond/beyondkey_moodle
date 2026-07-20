@@ -417,7 +417,8 @@ if (
         WHERE e.courseid = :courseid
           AND e.quizid = :cmid
           AND u.id = :studentid
-          AND e.deletionprogress = :deletionprogress";
+          AND e.deletionprogress = :deletionprogress
+          ORDER BY e.status DESC";
         $params = [
             'courseid' => $courseid,
             'cmid' => $cmid,
@@ -431,8 +432,9 @@ if (
         $studentdata = [];
         foreach ($sqlexecuted as $info) {
 
-// Update this for Attempt wise images report start --
-            $attemptid = $info->status;
+	// Update this for Attempt wise images report start --
+
+            $attemptid = $DB->get_field('quiz_attempts', 'attempt', ['id' => $info->status]);
 
             if (!isset($studentdata[$attemptid])) {
                 $studentdata[$attemptid] = [

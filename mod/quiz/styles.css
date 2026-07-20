@@ -1181,3 +1181,11 @@ table.quizreviewsummary td.cell {
         page-break-inside: avoid;
     }
 }
+
+/* Added by Hemanth for grading report start--- */
+#page-grade-report-grader-index body.path-grade-report-grader .gradeparent tr.heading {
+    position: static !important;
+    top: auto !important;
+    z-index: auto !important;
+}
+ /* Added by Hemanth for grading report end--- */

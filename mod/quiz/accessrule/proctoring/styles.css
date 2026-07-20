@@ -456,3 +456,13 @@ body.proctoring-lb-disable-scrolling {
 #quizaccess_proctoring_user_table {
     margin-bottom: 5rem;
 }
+ /* Added by Hemanth start --- */
+#page-mod-quiz-accessrule-proctoring-report #proctoring-table-body{
+    flex-direction: column !important;
+}
+
+#page-mod-quiz-accessrule-proctoring-report .proctoring-border-color-none {
+    width: 117px !important;
+    padding-bottom: 3px !important;
+}
+ /* Added by Hemanth end --- */
