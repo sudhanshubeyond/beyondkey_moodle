@@ -83,9 +83,14 @@ class get_ai_report extends \external_api {
 
         $records = $DB->get_records_sql($sql, $params, $offset, $perpage);
 
+        if ($total > 10) {
+            $enablepagenation = true;
+        }
+
         return [
             'total' => $total,
-            'records' => array_values($records)
+            'records' => array_values($records),
+            'enablepagenation' => $enablepagenation
         ];
     }
 
@@ -103,7 +108,8 @@ class get_ai_report extends \external_api {
                     'timecreated' => new external_value(PARAM_INT, 'time'),
                     'fullname' => new external_value(PARAM_TEXT, 'name')
                 ])
-            )
+            ),
+            'enablepagenation' => new external_value(PARAM_BOOL, 'Enable Pagenation'),
         ]);
     }    
 }

@@ -25,6 +25,8 @@ define(['core/ajax'], function(Ajax) {
 
             totalRecords = response.total;
 
+            let pagination = response.enablepagenation;
+
             let tbody = document.querySelector('#proctoring-table tbody');
             tbody.innerHTML = '';
 
@@ -45,7 +47,14 @@ define(['core/ajax'], function(Ajax) {
                 tbody.appendChild(tr);
             });
 
-            updatePagination();
+            const paginationContainer = document.getElementById('pagination-container');
+
+            if (pagination) {
+                paginationContainer.style.display = 'flex';
+                updatePagination();
+            } else {
+                paginationContainer.style.display = 'none';
+            }
 
         }).fail(function(error) {
             console.error(error);
