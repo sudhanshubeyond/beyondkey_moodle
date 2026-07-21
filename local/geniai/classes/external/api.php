@@ -287,80 +287,45 @@ class api {
      *
      * @throws \dml_exception
      */
-    public static function custom_chat_completions($messages, $courseid) {
-        global $DB, $USER;
 
-        $apikey = get_config("local_geniai", "apikey");
-        //$apikey = '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';
-	$apikey = "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";
-        $model = get_config("local_geniai", "model");
-        $maxtokens = get_config("local_geniai", "max_tokens");
+    public static function custom_chat_completions($message, $courseid) {
 
-	if ($courseid) {
-		if ($course = $DB->get_record("course", ["id" => $courseid])) {
-             		$courseTitle = $course->fullname;
-                	$courseDesc = $course->summary;
-            	}
-	        $post = (object)[
-        	    //"courseId" => $courseid,
-	            "question" => $messages,
-		    //"query" => $messages,
-		    //"CourseTitle" => $courseTitle,
-                    //"CourseDesc" => $courseDesc,
-        	    //"moduleName" => 'string',
-	            //"moduleUrl" => 'string',
-		    "sessionId" => $USER->sesskey,
-		    "userName" => $USER->firstname . ' ' . $USER->lastname
-        	];
-	} else {
-		$post = (object)[
-                    //"courseId" => 18,
-                    "question" => $messages,
-		    //"query" => $messages,
-		    //"CourseTitle" => '',
-		    //"CourseDesc" => '',
-                    //"moduleName" => 'string',
-                    //"moduleUrl" => 'string',
-		    "sessionId" => $USER->sesskey,
-		    "userName" => $USER->firstname . ' ' . $USER->lastname
-                ];
-	}
+        global $USER;
+        $apikey = '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';
+
+        $post = [
+            "Question" => $message,
+            "SessionId" => $USER->sesskey
+        ];
 
         $ch = curl_init();
-        // curl_setopt($ch, CURLOPT_URL, "https://genai-woodmontcollege-app.azurewebsites.net/api/AITutor/GetAITutorAnswer");
-	curl_setopt($ch, CURLOPT_URL, "https://sanlamdemo.beyondkey.co/api/ChatbotQNA/GetQnAResponse");
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-        curl_setopt($ch, CURLOPT_POST, 1);
+
+        curl_setopt($ch, CURLOPT_URL, "https://moodlepoc.beyondkey.co:8504/api/ChatbotQNA/GetQnAResponse");
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_POST, true);
         curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($post));
 
         curl_setopt($ch, CURLOPT_HTTPHEADER, [
             "Content-Type: application/json",
+            "Accept: application/json",
             "x-api-key: $apikey",
         ]);
 
-	curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 
         $result = curl_exec($ch);
+
         if (curl_errno($ch)) {
             return [
-                "error" => [
-                    "message" => "http error: " . curl_error($ch),
-                ],
+                "status" => "false",
+                "message" => curl_error($ch)
             ];
         }
+
         curl_close($ch);
 
-        $gpt = json_decode($result, true);
-        try {
-            //$DB->insert_record("local_geniai_usage", $usage);
-            $gpt = json_decode($result, true);
-        } catch (\dml_exception $e) {
-            echo $e->getMessage();
-        }
-
-        return $gpt;
+        return json_decode($result, true);
     }
-
     /**
      * Clear Chat history from AI
      *
@@ -369,28 +334,10 @@ class api {
      */
     public static function clear_chat_history() {
         global $DB, $USER;
-
-        $apikey = get_config("local_geniai", "apikey");
-        /*$apikey = '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';
-
-        $post = (object)[
-            "sessionId" => $USER->sesskey
-        ];
-
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, "https://knowledge-platform-c3c3hwbwdwasaedw.eastus-01.azurewebsites.net/api/ChatbotQNA/DeleteQNAHistory");
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-        curl_setopt($ch, CURLOPT_POST, 1);
-        curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($post));
-
-        curl_setopt($ch, CURLOPT_HTTPHEADER, [
-            "Content-Type: application/json",
-            "x-api-key: $apikey",
-        ]);*/
-
-	$apikey = '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';
+       
+	    $apikey = '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';
         $sessionid = $USER->sesskey;
-        $url = "https://sanlamdemo.beyondkey.co/api/ChatbotQNA/DeleteQNAHistory" . "?sessionId=" . $sessionid;
+        $url = "https://moodlepoc.beyondkey.co:8504/api/ChatbotQNA/DeleteQNAHistory?sessionId=".$sessionid;
 
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);

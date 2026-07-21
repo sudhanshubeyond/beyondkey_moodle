@@ -82,7 +82,7 @@ $string['message_01'] = 'Hello, {$a}';
 /*$string['message_02_course'] = 'Welcome to the course {$a->coursename} on Moodle {$a->moodlename}!
 I am {$a->geniainame}, and I am here to make your learning journey as amazing as possible.
 How can I assist you today? 🌟📚';*/
-$string['message_02_course'] = "I’m an AI Agent, here to make your learning path engaging and hassle-free.\nHow can I assist you today? 📚";
+$string['message_02_course'] = "I’m an AI Tutor, here to make your learning path engaging and hassle-free.\nHow can I assist you today? 📚";
 //$string['message_02_course'] = "I’m DesignGenie, your personal studio sidekick at Sydney Design School 🎨\n
 //I can help you with courses, projects, tools, or design ideas.\n\nFirst up, what do you need most today:\nGuidance, ideas, or answers?";
 //$string['message_02_geniai'] = 'Hello! I am {$a}, here to help you. If you prefer, you can send me an audio message, and I will respond in audio as well. If you prefer to write, I will reply in text. Whichever you prefer!';
@@ -134,7 +134,7 @@ $string['settings_casedesc_relaxedtones'] = 'Relaxed Tones';
 $string['settings_casedesc_relaxedtones_desc'] = 'Generates lighter and informal texts with a creative and friendly approach.';
 $string['settings_casedesc_temperature'] = 'Temperature';
 $string['settings_casedesc_top_p'] = 'Top_p';
-$string['talk_geniai'] = 'Talk to AI Agent here';
+$string['talk_geniai'] = 'Talk to AI Tutor here';
 $string['url_moodle'] = 'The Moodle URL is "{$a->wwwroot}" and the Moodle name is "{$a->fullname}"';
 $string['voice'] = 'Voice used in the audio response';
 $string['write_message'] = 'Write a message...';
