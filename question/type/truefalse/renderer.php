@@ -100,7 +100,7 @@ class qtype_truefalse_renderer extends qtype_renderer {
         $result .= html_writer::tag('div', $question->format_questiontext($qa),
                 array('class' => 'qtext'));
 
-        $result .= html_writer::start_tag('fieldset', array('class' => 'ablock'));
+        $result .= html_writer::start_tag('fieldset', array('class' => 'ablock radio-card-margin'));
         if (!empty($question->showstandardinstruction)) {
             $legendclass = '';
             $questionnumber = $options->add_question_identifier_to_label(get_string('selectone', 'qtype_truefalse'), true, true);

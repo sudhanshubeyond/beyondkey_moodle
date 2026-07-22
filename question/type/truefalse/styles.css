@@ -2,3 +2,21 @@
 .que.truefalse .answer div.r1 {
     padding: 0.3em;
 }
+
+/* Chaitanya CSS Modifications start--- */
+.ablock.radio-card-margin input[type="radio"] {
+    margin-left:20px !important;
+    margin-top:8px !important;
+}
+
+.ablock.radio-card-margin {
+    margin-left:10px !important;
+}
+
+.qtext {margin-bottom:10px !important;}
+
+.formulation.clearfix.custom-card-height {
+    display: flex;
+    flex-direction: column;
+}
+/* Chaitanya CSS Modifications end--- */

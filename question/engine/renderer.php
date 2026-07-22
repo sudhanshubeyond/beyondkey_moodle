@@ -90,7 +90,7 @@ class core_question_renderer extends plugin_renderer_base {
         $output .= html_writer::tag('div',
                 $this->add_part_heading($qtoutput->formulation_heading(),
                     $this->formulation($qa, $behaviouroutput, $qtoutput, $options)),
-                array('class' => 'formulation clearfix'));
+                array('class' => 'formulation clearfix custom-card-height'));
         $output .= html_writer::nonempty_tag('div',
                 $this->add_part_heading(get_string('feedback', 'question'),
                     $this->outcome($qa, $behaviouroutput, $qtoutput, $options)),
