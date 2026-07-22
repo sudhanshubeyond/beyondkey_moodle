@@ -18,16 +18,18 @@ class observer {
         $curl->setopt([
             'CURLOPT_HTTPHEADER' => [
                 'Content-Type: application/json'
-            ]
+            ],
+            'CURLOPT_TIMEOUT' => 300,
+            'CURLOPT_CONNECTTIMEOUT' => 10,
         ]);
 
-        $payload = json_encode(['quizID' => $cmid, 'status' => '', 
-                'createdOn' => gmdate('Y-m-d\TH:i:s.v\Z'),
-                'modifiedOn' => gmdate('Y-m-d\TH:i:s.v\Z'),
-                'studentCount' => 0]);
+        $payload = json_encode(['quizID' => $cmid, 'status' => '',
+            'createdOn' => gmdate('Y-m-d\TH:i:s.v\Z'),
+            'modifiedOn' => gmdate('Y-m-d\TH:i:s.v\Z'),
+            'studentCount' => 0]);
 
         $response = $curl->post(
-            'https://proctoringlms.azurewebsites.net/api/Proctoring/StartQuiz', $payload
+                'https://proctoringlms.azurewebsites.net/api/Proctoring/StartQuiz', $payload
         );
     }
 }
