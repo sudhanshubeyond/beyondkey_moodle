@@ -418,7 +418,7 @@ if (
           AND e.quizid = :cmid
           AND u.id = :studentid
           AND e.deletionprogress = :deletionprogress
-     ORDER BY e.status DESC, e.id ASC";
+     ORDER BY e.status DESC, e.id DESC";
         $params = [
             'courseid' => $courseid,
             'cmid' => $cmid,
