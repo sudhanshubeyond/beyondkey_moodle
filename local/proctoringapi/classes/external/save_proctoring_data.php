@@ -19,7 +19,7 @@ class save_proctoring_data extends external_api {
             'QuizID' => new external_value(PARAM_INT),
             'focus_score_percent' => new external_value(PARAM_INT),
             'cheating_risk_percent' => new external_value(PARAM_INT),
-            'FinalObservations' => new external_value(PARAM_TEXT),
+            'FinalObservations' => new external_value(PARAM_RAW),
             'risk_level' => new external_value(PARAM_TEXT),
             'ErrorMessage' => new external_value(PARAM_TEXT)
         ]);
