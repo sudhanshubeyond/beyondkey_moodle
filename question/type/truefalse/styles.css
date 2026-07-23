@@ -19,4 +19,27 @@
     display: flex;
     flex-direction: column;
 }
+
+.que.multichoice .answer div.r0, .que.multichoice .answer div.r1 {
+    display: flex;
+    margin: 0.25rem 0;
+    align-items: center !important;
+}
+
+div[data-region="answer-label"] {
+    display:flex !important;
+    align-items:center !important;
+}
+
+div[data-region="answer-label"] p {
+    margin-bottom:0 !important;
+}
+
+.answernumber {margin-left:0 !important; margin-right:0px !important;}
+
+.bottom-region-main-box {padding-top:10px !important; padding-bottom:0px !important; margin-top:10px !important;}
+
+label[for="id_proctoring"]{margin-bottom:-6px !important;}
+
+.custom-proct-check {align-items:center !important; margin-top:10px !important; margin-bottom:10px !important}
 /* Chaitanya CSS Modifications end--- */

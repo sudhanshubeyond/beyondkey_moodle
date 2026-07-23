@@ -90,7 +90,7 @@ $string['notpermissionreport'] = 'Proctoring reports are disabled for you.';
 $string['notrequired'] = 'Not required';
 $string['nousersfound'] = 'No users found';
 $string['numberofimages'] = 'Number of images';
-$string['openwebcam'] = 'Allow your webcam to continue';
+$string['openwebcam'] = 'This exam requires access to your webcam.';
 $string['photoalttext'] = 'The screen capture will appear in this box.';
 $string['photonotuploaded'] = 'Photo not uploaded. Please contact to the admin.';
 $string['picturesreport'] = 'View proctoring report';
@@ -166,7 +166,7 @@ $string['proctoringlabel'] = 'I agree with the validation process.';
 $string['proctoringrequired'] = 'Webcam identity validation';
 $string['proctoringrequired_help'] = 'Enabling proctoring requires students to be monitored using webcam and screen recording during the quiz attempt.';
 $string['proctoringrequiredoption'] = 'Enable webcam capture by Proctoring';
-$string['proctoringstatement'] = 'This exam requires webcam access.<br />(Please allow webcam access).';
+$string['proctoringstatement'] = 'Please allow webcam access to continue.';
 $string['provide_image'] = 'Please provide an image to upload.';
 $string['quizaccess_proctoring'] = 'Quizaccess Proctoring';
 $string['quiztitle'] = 'Quiz Title';
@@ -234,7 +234,7 @@ $string['webcam'] = 'Webcam';
 $string['webcampicture'] = 'Captured pictures';
 $string['wrong_during_taking_image'] = 'Something went wrong during taking the image.';
 $string['wrong_during_taking_screenshot'] = 'Something went wrong during taking screenshot.';
-$string['youmustagree'] = 'You must agree to validate your identity before continuing.';
+$string['youmustagree'] = 'Please agree to the identity verification process before continuing.';
 
 // Azure Blob Storage settings.
 $string['setting:azure_heading'] = 'Azure Blob Storage';

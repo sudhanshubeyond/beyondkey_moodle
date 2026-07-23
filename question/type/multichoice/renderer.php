@@ -110,7 +110,7 @@ abstract class qtype_multichoice_renderer_base extends qtype_with_combined_feedb
                         $this->number_in_style($value, $question->answernumbering), 'answernumber');
             }
             $choicetext = $question->format_text($ans->answer, $ans->answerformat, $qa, 'question', 'answer', $ansid);
-            $choice = html_writer::div($choicetext, 'flex-fill ms-1');
+            $choice = html_writer::div($choicetext, 'flex-fill');
 
             $radiobuttons[] = $hidden . html_writer::empty_tag('input', $inputattributes) .
                     html_writer::div($choicenumber . $choice, 'd-flex w-auto', [
