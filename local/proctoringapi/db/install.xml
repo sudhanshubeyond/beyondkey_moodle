@@ -18,5 +18,30 @@
 <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
 </KEYS>
 </TABLE>
+
+<!-- Hemanth Created table for Quiz attempt logs start -->
+<TABLE NAME="local_proctoring_quiz_startattemptlog" COMMENT="Stores API response after calling the Azure API">
+    <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
+        <FIELD NAME="userid" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0"/>
+        <FIELD NAME="attemptid" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0"/>
+        <FIELD NAME="cmid" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0"/>
+        <FIELD NAME="apiresponse" TYPE="text" NOTNULL="false"/>
+        <FIELD NAME="timecreated" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0"/>
+    </FIELDS>
+
+    <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+    </KEYS>
+
+    <INDEXES>
+        <INDEX NAME="userid_idx" UNIQUE="false" FIELDS="userid"/>
+        <INDEX NAME="attemptid_idx" UNIQUE="false" FIELDS="attemptid"/>
+        <INDEX NAME="cmid_idx" UNIQUE="false" FIELDS="quizid"/>
+    </INDEXES>
+</TABLE>
+<!-- Hemanth Created table for Quiz attempt logs end -->
+
+
 </TABLES>
 </XMLDB>

@@ -57,10 +57,20 @@ public static function attempt_submitted(\mod_quiz\event\attempt_submitted $even
         'studentCount' => 0,
     ]);
     
-    $curl->post(
+    $response = $curl->post(
         'https://proctoringlms.azurewebsites.net/api/Proctoring/StartQuiz',
         $payload
     );
+
+    $record = new \stdClass();
+    $record->userid       = $userid;
+    $record->attemptid    = $attemptid;
+    $record->cmid         = $cmid;
+    $record->response     = json_encode($response, true);
+    $record->timecreated  = time();
+    $record->timemodified = time();
+
+    $insert = $DB->insert_record('local_proctoring_quiz_startattemptlog', $record);
     
 }
 
