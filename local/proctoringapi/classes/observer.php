@@ -34,7 +34,7 @@ class observer {
     }*/
 
 public static function attempt_submitted(\mod_quiz\event\attempt_submitted $event) {
-    global $CFG;
+    global $CFG, $DB;
     require_once($CFG->libdir . '/filelib.php');
  
     $cmid = $event->contextinstanceid;
@@ -68,8 +68,7 @@ public static function attempt_submitted(\mod_quiz\event\attempt_submitted $even
     $record->cmid         = $cmid;
     $record->apiresponse     = json_encode($response, true);
     $record->timecreated  = time();
-    $record->timemodified = time();
-
+  
     $insert = $DB->insert_record('local_proctoring_quiz_startattemptlog', $record);
     
 }
