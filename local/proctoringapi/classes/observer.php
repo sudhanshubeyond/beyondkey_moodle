@@ -66,7 +66,7 @@ public static function attempt_submitted(\mod_quiz\event\attempt_submitted $even
     $record->userid       = $userid;
     $record->attemptid    = $attemptid;
     $record->cmid         = $cmid;
-    $record->response     = json_encode($response, true);
+    $record->apiresponse     = json_encode($response, true);
     $record->timecreated  = time();
     $record->timemodified = time();
 
