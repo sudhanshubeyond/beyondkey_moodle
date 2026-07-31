@@ -81,9 +81,18 @@
 <table class="table">
 <thead>
         <tr class="table-info">
-            <th>{{#str}}user,quizaccess_proctoring{{/str}}</th>
-            <th>{{#str}}email,quizaccess_proctoring{{/str}}</th>
-            <th>{{#str}}dateverified,quizaccess_proctoring{{/str}}</th>
+            <th>
+                <a href="{{url}}?courseid={{courseid}}&cmid={{cmid}}&sort=fullname&dir={{fullname_dir}}">
+                {{#str}}user,quizaccess_proctoring{{/str}}{{fullnameicon}}</a>
+            </th>
+            <th>
+                <a href="{{url}}?courseid={{courseid}}&cmid={{cmid}}&sort=email&dir={{email_dir}}">
+                {{#str}}email,quizaccess_proctoring{{/str}}{{emailicon}}</a>
+            </th>
+            <th>
+                <a href="{{url}}?courseid={{courseid}}&cmid={{cmid}}&sort=timemodified&dir={{timemodified_dir}}">{{#str}}dateverified,quizaccess_proctoring{{/str}}{{timemodifiedicon}}
+                </a>
+            </th>
             <th>{{#str}}identity_mismatch_label,quizaccess_proctoring{{/str}}</th>
             <th>{{#str}}actions,quizaccess_proctoring{{/str}}</th>
         </tr>

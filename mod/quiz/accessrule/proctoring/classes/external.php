@@ -143,11 +143,25 @@ class quizaccess_proctoring_external extends external_api {
             list(, $data) = explode(';', $data);
             $url = self::geturl($data, $screenshotid, $USER, $courseid, $record, $context, $fs);
 
-
             // Upload webcam image to Azure Blob Storage (if configured).
-            $webcamraw = base64_decode(explode(',', explode(';', $webcampicture)[1])[1]);
             $azureblobpath = "quizzes/$quizid/{$USER->id}/$attempt/New/webcam_{$USER->id}_{$screenshotid}_" . time() . ".png";
-            quizaccess_proctoring_upload_to_azure($webcamraw, $azureblobpath);
+
+            // Hemanth added here start ---
+            $az_record = new stdClass();
+            $az_record->attemptid = $attempt;
+            $az_record->quizid = $quizid;
+            $az_record->cmid = $quizid;
+            $az_record->courseid = $courseid;
+            $az_record->userid = $USER->id;
+            $az_record->filepath = $azureblobpath;
+            $az_record->filename = $USER->id . '_' . $screenshotid . '_' . time() . '.png';
+            $az_record->webcamraw = $webcampicture;
+            $az_record->status = 0;
+            $az_record->timecreated = time();
+            $az_record->timemodified = time();
+
+            $insert = $DB->insert_record('local_proctoring_images', $az_record);
+            // Hemanth added here end ---
 
             $camshot = $DB->get_record('quizaccess_proctoring_logs', ['id' => $screenshotid]);
 
