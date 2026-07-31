@@ -19,37 +19,6 @@
 </KEYS>
 </TABLE>
 
-// Added by Hemanth start----
-<TABLE NAME="local_proctoring_images" COMMENT="Stores captured webcam images for quiz attempts">
-    <FIELDS>
-        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
-        <FIELD NAME="attemptid" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0"/>
-        <FIELD NAME="quizid" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0"/>
-        <FIELD NAME="cmid" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0"/>
-        <FIELD NAME="courseid" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0"/>
-        <FIELD NAME="userid" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0"/>
-        <FIELD NAME="filepath" TYPE="text" NOTNULL="false"/>
-        <FIELD NAME="filename" TYPE="char" LENGTH="255" NOTNULL="false"/>
-        <FIELD NAME="webcamraw" TYPE="text" NOTNULL="false" SEQUENCE="false"
-            COMMENT="Stores the raw webcam image as a Base64 string"/>
-        <FIELD NAME="userid" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0"/>
-        <FIELD NAME="timecreated" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0"/>
-        <FIELD NAME="timemodified" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0"/>
-    </FIELDS>
-
-    <KEYS>
-        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
-    </KEYS>
-
-    <INDEXES>
-        <INDEX NAME="attemptid_idx" UNIQUE="false" FIELDS="attemptid"/>
-        <INDEX NAME="userid_idx" UNIQUE="false" FIELDS="userid"/>
-        <INDEX NAME="quizid_idx" UNIQUE="false" FIELDS="quizid"/>
-    </INDEXES>
-</TABLE>
-// Added by Hemanth end ---
-
-
 <!-- Hemanth Created table for Quiz attempt logs start -->
 <TABLE NAME="local_proctoring_quiz_startattemptlog" COMMENT="Stores API response after calling the Azure API">
     <FIELDS>

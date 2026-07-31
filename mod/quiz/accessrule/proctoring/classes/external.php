@@ -16,6 +16,8 @@
 
 defined('MOODLE_INTERNAL') || die;
 
+use local_proctoringapi\task\process_proctoring_images;
+
 require_once($CFG->libdir.'/externallib.php');
 require_once($CFG->dirroot.'/mod/quiz/accessrule/proctoring/lib.php');
 
@@ -147,20 +149,21 @@ class quizaccess_proctoring_external extends external_api {
             $azureblobpath = "quizzes/$quizid/{$USER->id}/$attempt/New/webcam_{$USER->id}_{$screenshotid}_" . time() . ".png";
 
             // Hemanth added here start ---
-            $az_record = new stdClass();
-            $az_record->attemptid = $attempt;
-            $az_record->quizid = $quizid;
-            $az_record->cmid = $quizid;
-            $az_record->courseid = $courseid;
-            $az_record->userid = $USER->id;
-            $az_record->filepath = $azureblobpath;
-            $az_record->filename = $USER->id . '_' . $screenshotid . '_' . time() . '.png';
-            $az_record->webcamraw = $webcampicture;
-            $az_record->status = 0;
-            $az_record->timecreated = time();
-            $az_record->timemodified = time();
 
-            $insert = $DB->insert_record('local_proctoring_images', $az_record);
+            // Insert images into adhoc_task table
+            $task = new process_proctoring_images();
+            $task->set_custom_data([
+                'attemptid' => $attempt,
+                'cmid' => $quizid,
+                'courseid' => $courseid,
+                'userid' => $USER->id,
+                'filepath' => $azureblobpath,
+                'filename' => $USER->id . '_' . $screenshotid . '_' . time() . '.png',
+                'webcamraw' => $webcampicture,
+            ]);
+
+            \core\task\manager::queue_adhoc_task($task);
+
             // Hemanth added here end ---
 
             $camshot = $DB->get_record('quizaccess_proctoring_logs', ['id' => $screenshotid]);
