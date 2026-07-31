@@ -104,9 +104,17 @@ function xmldb_local_proctoringapi_upgrade($oldversion) {
         upgrade_plugin_savepoint(true, 2026062912, 'local', 'proctoringapi');
     }
 
+    if ($oldversion < 2026062913) {
+        $table = new xmldb_table('local_proctoring_images');
 
+        // Drop the table if it exists.
+        if ($dbman->table_exists($table)) {
+            $dbman->drop_table($table);
+        }
 
-
+        // Upgrade savepoint.
+        upgrade_plugin_savepoint(true, 2026062913, 'local', 'proctoringapi');
+    }
 
     return true;
 }
