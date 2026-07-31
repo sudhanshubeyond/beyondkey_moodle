@@ -40,6 +40,26 @@ $reportid = optional_param('reportid', null, PARAM_INT);
 $logaction = optional_param('logaction', null, PARAM_TEXT);
 $page = optional_param('page', 0, PARAM_INT);
 
+// Added for Report sorting start---
+
+$sort = optional_param('sort', 'timemodified', PARAM_ALPHA);
+$dir = optional_param('dir', 'DESC', PARAM_ALPHA);
+
+$allowedcolumns = [
+    'fullname',
+    'email',
+    'timemodified',
+];
+
+if (!in_array($sort, $allowedcolumns)) {
+    $sort = 'timemodified';
+}
+
+$dir = strtoupper($dir);
+$dir = ($dir === 'ASC') ? 'ASC' : 'DESC';
+
+// Added for Report sorting end---
+
 $analyzebtn = get_string('analyzbtn', 'quizaccess_proctoring');
 $analyzebtnconfirm = get_string('analyzbtnconfirm', 'quizaccess_proctoring');
 
@@ -153,6 +173,23 @@ $proctoringprolink = new moodle_url(
 
 echo $OUTPUT->header();
 
+// Hemanth Added for Report sorting start----
+switch ($sort) {
+    case 'fullname':
+        $orderby = "u.firstname $dir, u.lastname $dir";
+        break;
+
+    case 'email':
+        $orderby = "u.email $dir";
+        break;
+
+    case 'timemodified':
+    default:
+        $orderby = "e.timemodified $dir";
+}
+
+// Hemanth Added for Report sorting end----
+
 $backbutton = new moodle_url('/mod/quiz/view.php', ['id' => $cmid]);
 
 // Print report.
@@ -189,7 +226,8 @@ if (
                     e.courseid = :courseid
                     AND e.quizid = :cmid
                     AND u.id = :studentid
-                    AND e.id = :reportid ";
+                    AND e.id = :reportid 
+            ORDER BY $orderby";
     }
 
     if ($studentid == null && $cmid != null && $courseid != null) {
@@ -218,7 +256,8 @@ if (
                     e.courseid = :courseid
                     AND e.quizid = :cmid
                 GROUP BY
-                    e.userid, u.firstname, u.lastname, u.email, pfw.reportid ";
+                    e.userid, u.firstname, u.lastname, u.email, pfw.reportid 
+                    ORDER BY $orderby";
     }
 
     if ($studentid == null && $cmid != null && $searchkey != null && $submittype == 'clear') {
@@ -239,7 +278,8 @@ if (
                         AND e.userid = pfw.userid
                         WHERE e.courseid = :courseid
                         AND e.quizid = :quizid
-                        GROUP BY e.userid, u.firstname, u.lastname, u.email, pfw.reportid";
+                        GROUP BY e.userid, u.firstname, u.lastname, u.email, pfw.reportid
+                        ORDER BY $orderby";
     }
 
     if ($studentid == null && $cmid != null && $searchkey != null && $submittype == 'Search') {
@@ -264,7 +304,8 @@ if (
                                 . $DB->sql_like('u.email', ':emaillike', false) . ")
                                 OR (e.courseid = :courseid3 AND e.quizid = :quizid3 AND "
                                 . $DB->sql_like('u.lastname', ':lastnamelike', false) . ")
-                                GROUP BY e.userid, u.firstname, u.lastname, u.email, pfw.reportid";
+                                GROUP BY e.userid, u.firstname, u.lastname, u.email, pfw.reportid
+                                ORDER BY $orderby";
     }
 
 
@@ -384,6 +425,28 @@ if (
         'rows' => $rows,
         'backbutton' => preg_replace('/&amp;/', '&', $backbutton),
     ];
+
+    // Hemanth Added for Report sorting start----
+        $templatecontext->fullname_dir = ($sort == 'fullname' && $dir == 'ASC') ? 'DESC' : 'ASC';
+
+        $templatecontext->email_dir = ($sort == 'email' && $dir == 'ASC') ? 'DESC' : 'ASC';
+
+        $templatecontext->timemodified_dir = ($sort == 'timemodified' && $dir == 'ASC') ? 'DESC' : 'ASC';
+
+        $templatecontext->fullnameicon = '';
+        if ($sort == 'fullname') {
+            $templatecontext->fullnameicon = ($dir == 'ASC') ? '↑' : '↓';
+        }
+        $templatecontext->emailicon = '';
+        if ($sort == 'email') {
+            $templatecontext->emailicon = ($dir == 'ASC') ? '↑' : '↓';
+        }
+        $templatecontext->timemodifiedicon = '';
+        if ($sort == 'timemodified') {
+            $templatecontext->timemodifiedicon = ($dir == 'ASC') ? '↑' : '↓';
+        }
+    // Hemanth Added for Report sorting end----
+
     echo $OUTPUT->render_from_template('quizaccess_proctoring/report', $templatecontext);
 
     // Pagination added.
@@ -418,7 +481,7 @@ if (
           AND e.quizid = :cmid
           AND u.id = :studentid
           AND e.deletionprogress = :deletionprogress
-     ORDER BY e.status DESC, e.id DESC";
+     ORDER BY e.status DESC, e.id ASC";
         $params = [
             'courseid' => $courseid,
             'cmid' => $cmid,

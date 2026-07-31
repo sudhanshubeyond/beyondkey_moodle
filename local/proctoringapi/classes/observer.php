@@ -4,73 +4,21 @@ namespace local_proctoringapi;
 
 defined('MOODLE_INTERNAL') || die();
 
+// Hemanth added start--
+use local_proctoringapi\task\process_proctoring_images;
+// Hemanth added end---
 class observer {
-
-/*    public static function attempt_submitted(\mod_quiz\event\attempt_submitted $event) {
-        global $CFG;
-
-        require_once($CFG->libdir . '/filelib.php');
-
-        $cmid = $event->contextinstanceid;
-
-        $curl = new \curl();
-
-        $curl->setopt([
-            'CURLOPT_HTTPHEADER' => [
-                'Content-Type: application/json'
-            ],
-            'CURLOPT_TIMEOUT' => 300,
-            'CURLOPT_CONNECTTIMEOUT' => 10,
-        ]);
-
-        $payload = json_encode(['quizID' => $cmid, 'status' => '',
-            'createdOn' => gmdate('Y-m-d\TH:i:s.v\Z'),
-            'modifiedOn' => gmdate('Y-m-d\TH:i:s.v\Z'),
-            'studentCount' => 0]);
-
-        $response = $curl->post(
-                'https://proctoringlms.azurewebsites.net/api/Proctoring/StartQuiz', $payload
-        );
-    }*/
-
     public static function attempt_submitted(\mod_quiz\event\attempt_submitted $event) {
-        global $CFG, $DB;
+        global $CFG;
         require_once($CFG->libdir . '/filelib.php');
 
-        $cmid = $event->contextinstanceid;
-    
-        $curl = new \curl();
-        $curl->setopt([
-            'CURLOPT_HTTPHEADER' => [
-                'Content-Type: application/json',
-            ],
-            'CURLOPT_TIMEOUT_MS' => 1000,       // cap total wait
-            'CURLOPT_CONNECTTIMEOUT' => 3,      // cap connection handshake
-            'CURLOPT_NOSIGNAL' => 1,
-        ]);
-    
-        $payload = json_encode([
-            'quizID' => $cmid,
-            'status' => '',
-            'createdOn' => gmdate('Y-m-d\TH:i:s.v\Z'),
-            'modifiedOn' => gmdate('Y-m-d\TH:i:s.v\Z'),
-            'studentCount' => 0,
-        ]);
-        
-        $response = $curl->post(
-            'https://proctoringlms.azurewebsites.net/api/Proctoring/StartQuiz',
-            $payload
-        );
+        $task = new process_proctoring_images();
 
-        $record = new \stdClass();
-        $record->userid       = $event->userid;
-        $record->attemptid    = $event->objectid;
-        $record->cmid         = $event->contextinstanceid;
-        $record->apiresponse     = json_encode($response, true);
-        $record->timecreated  = time();
-
-        $insert = $DB->insert_record('local_proctoring_quiz_startattemptlog', $record);
-        
+        $task->set_custom_data([
+            'attemptid' => $event->objectid,
+            'userid'    => $event->userid,
+            'quizid'    => $event->contextinstanceid,
+        ]);
+        \core\task\manager::queue_adhoc_task($task);
     }
-
 }
