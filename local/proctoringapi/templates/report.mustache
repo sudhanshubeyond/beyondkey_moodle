@@ -3,14 +3,11 @@
 <div class="row mb-3">
 
     <div class="col-md-6">
-        <input type="text"
-               id="searchbox"
-               class="form-control"
-               placeholder="Search student, attempt or risk...">
+        <input type="text" id="searchbox" class="form-control" placeholder="Search student, attempt or risk...">
     </div>
 
     <div class="col-md-3">
-        <select id="perpage" class="form-control">
+        <select id="pagenation" class="form-control">
             <option value="10">10 per page</option>
             <option value="25">25 per page</option>
             <option value="50">50 per page</option>
@@ -26,9 +23,9 @@
     <thead>
         <tr>
             <th data-sort="fullname">Student</th>
-            <th data-sort="attemptid">Attempt</th>
-            <th data-sort="focus_score_percent">Focus</th>
-            <th data-sort="cheating_risk_percent">Risk</th>
+            <th data-sort="attemptid" style="text-align: center;">Attempt</th>
+            <th data-sort="focus_score_percent" style="text-align: center;">Focus</th>
+            <th data-sort="cheating_risk_percent" style="text-align: center;">Risk</th>
             <th data-sort="risk_level">Risk Level</th>
             <th data-sort="finalobservations">Observations</th>
             <th data-sort="timecreated">Date</th>

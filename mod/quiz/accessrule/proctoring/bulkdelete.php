@@ -34,6 +34,8 @@ $cmid = required_param('cmid', PARAM_INT);
 $type = required_param('type', PARAM_TEXT);
 $id = required_param('id', PARAM_INT);
 $sesskey = required_param('sesskey', PARAM_ALPHANUM);
+$quizname = optional_param('quizname', '', PARAM_RAW);
+
 if (!confirm_sesskey($sesskey)) {
     throw new moodle_exception('invalidsesskey', 'quizaccess_proctoring');
 }
@@ -88,7 +90,12 @@ if ($type == 'course' || $type == 'quiz') {
         'cmid' => $cmid,
     ];
     $url = new moodle_url('/mod/quiz/accessrule/proctoring/proctoringsummary.php', $params);
-    redirect($url, get_string('settings:deleteallsuccess', 'quizaccess_proctoring'), -11, 'success');
+    if ($quizname) {
+        $params = (object) ['quizname' => $quizname];
+        redirect($url, get_string('settings:deletesinglesuccess', 'quizaccess_proctoring', $params), -11, 'success');
+    } else {
+        redirect($url, get_string('settings:deleteallsuccess', 'quizaccess_proctoring'), -11, 'success');
+    }
 } else {
     // Invalid type, show error message.
     throw new moodle_exception('invalidtype', 'quizaccess_proctoring');
