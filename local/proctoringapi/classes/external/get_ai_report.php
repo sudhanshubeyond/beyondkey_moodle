@@ -41,7 +41,7 @@ class get_ai_report extends \external_api {
 
         $params['cmid'] = $cmid;
 
-        $where = " AND pr.quizid = :cmid";
+        $where = " AND pr.quizid = :cmid ";
 
         if (!empty($search)) {
 
@@ -49,7 +49,7 @@ class get_ai_report extends \external_api {
                 CONCAT(u.firstname,' ',u.lastname) LIKE :search1
                 OR CAST(pr.attemptid AS CHAR) LIKE :search2
                 OR pr.risk_level LIKE :search3
-            )";
+            ) ";
 
             $params['search1'] = '%' . trim($search) . '%';
             $params['search2'] = '%' . trim($search) . '%';
@@ -79,6 +79,14 @@ class get_ai_report extends \external_api {
 
         $total = $DB->count_records_sql($countsql, $params);
 
+        $params2['cmid'] = $cmid;
+        $countsql2 = " SELECT COUNT(*)
+                        FROM {local_proctoring_results} pr
+                        JOIN {user} u ON u.id = pr.studentid
+                        JOIN {quiz_attempts} qa ON qa.id = pr.attemptid
+                        WHERE 1 = 1 AND pr.quizid = :cmid ";
+        $recordscount = $DB->count_records_sql($countsql2, $params2);
+
         $offset = $page * $perpage;
 
         $records = $DB->get_records_sql($sql, $params, $offset, $perpage);
@@ -90,7 +98,8 @@ class get_ai_report extends \external_api {
         return [
             'total' => $total,
             'records' => array_values($records),
-            'enablepagenation' => $enablepagenation
+            'enablepagenation' => $enablepagenation,
+            'enablesearch' => ($recordscount > 0) ? true : false,
         ];
     }
 
@@ -110,6 +119,7 @@ class get_ai_report extends \external_api {
                 ])
             ),
             'enablepagenation' => new external_value(PARAM_BOOL, 'Enable Pagenation'),
+            'enablesearch' => new external_value(PARAM_BOOL, 'Enable Search'),
         ]);
     }    
 }

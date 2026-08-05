@@ -110,6 +110,7 @@ $table->set_attribute('id', 'quizaccess_proctoring_summary_table');
 $table->sortable(true); // Sortable by quiz title.
 $table->no_sorting('action'); // Actions column should not be sortable.
 $table->setup();
+$table->column_class('numberofimages', 'text-center');
 
 // Filter quiz summary data for the current course.
 foreach ($quizsummary as $quiz) {
@@ -127,6 +128,7 @@ foreach ($quizsummary as $quiz) {
             'type' => 'quiz',
             'id' => $quiz->quizid,
             'sesskey' => sesskey(),
+            'quizname' => $quiz->name,
         ]);
 
         // Prepare attributes for the delete action.
@@ -182,6 +184,7 @@ if ($exists) {
     $deletealllink = html_writer::tag('button', $deletealllinktext, [
         'class' => 'btn btn-danger',
         'data-confirmation' => 'modal',
+        'title' => get_string('settingscontroll:deletealllinktext', 'quizaccess_proctoring'),
         'data-confirmation-type' => 'delete',
         'data-confirmation-title-str' => json_encode(["delete", "core"]),
         'data-confirmation-content-str' => json_encode(["areyousure_delete_all_course_record", "quizaccess_proctoring"]),

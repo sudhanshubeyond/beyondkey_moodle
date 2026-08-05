@@ -173,7 +173,7 @@ $proctoringprolink = new moodle_url(
 
 echo $OUTPUT->header();
 
-// Hemanth Added for Report sorting start----
+// Hemanth Added here for sorting start----
 switch ($sort) {
     case 'fullname':
         $orderby = "u.firstname $dir, u.lastname $dir";
@@ -188,7 +188,7 @@ switch ($sort) {
         $orderby = "e.timemodified $dir";
 }
 
-// Hemanth Added for Report sorting end----
+// Hemanth Added here for sorting end----
 
 $backbutton = new moodle_url('/mod/quiz/view.php', ['id' => $cmid]);
 
@@ -305,6 +305,7 @@ if (
                                 OR (e.courseid = :courseid3 AND e.quizid = :quizid3 AND "
                                 . $DB->sql_like('u.lastname', ':lastnamelike', false) . ")
                                 GROUP BY e.userid, u.firstname, u.lastname, u.email, pfw.reportid
+
                                 ORDER BY $orderby";
     }
 
@@ -351,65 +352,65 @@ if (
        // Print report.
     $rows = [];
     foreach ($sqlexecuted as $info) {
-            $row = [];
-            $row['userlink'] = $CFG->wwwroot.'/user/view.php?id=' . $info->studentid . '&course=' . $courseid;
-            $row['fullname'] = $info->firstname . ' ' . $info->lastname;
-            $row['email'] = $info->email;
-            $row['timemodified'] = date('Y/M/d H:i:s', $info->timemodified);
-            $row['warningicon'] = ($info->warningid == '') ? true : false;
+        $row = [];
+        $row['userlink'] = $CFG->wwwroot.'/user/view.php?id=' . $info->studentid . '&course=' . $courseid;
+        $row['fullname'] = $info->firstname . ' ' . $info->lastname;
+        $row['email'] = $info->email;
+        $row['timemodified'] = date('d M Y, g:i A', $info->timemodified);
+        $row['warningicon'] = ($info->warningid == '') ? true : false;
 
-            $actionmenu = new action_menu();
-            $actionmenu->set_kebab_trigger(get_string('actions'));
+        $actionmenu = new action_menu();
+        $actionmenu->set_kebab_trigger(get_string('actions'));
 
-            $viewurl = new moodle_url($PAGE->url, [
-                'courseid' => $courseid,
-                'quizid' => $cmid,
-                'cmid' => $cmid,
-                'studentid' => $info->studentid,
-                'reportid' => $info->reportid,
-            ]);
+        $viewurl = new moodle_url($PAGE->url, [
+            'courseid' => $courseid,
+            'quizid' => $cmid,
+            'cmid' => $cmid,
+            'studentid' => $info->studentid,
+            'reportid' => $info->reportid,
+        ]);
 
-            $viewaction = new action_menu_link_secondary(
-                $viewurl,
-                new pix_icon('e/insert_edit_image', get_string('viewimages', 'quizaccess_proctoring'), 'moodle'),
-                get_string('viewimages', 'quizaccess_proctoring')
-            );
-            $actionmenu->add($viewaction);
+        $viewaction = new action_menu_link_secondary(
+            $viewurl,
+            new pix_icon('e/insert_edit_image', get_string('viewimages', 'quizaccess_proctoring'), 'moodle'),
+            get_string('viewimages', 'quizaccess_proctoring')
+        );
+        $actionmenu->add($viewaction);
 
-            $deleteurl = new moodle_url($PAGE->url, [
-                'courseid' => $courseid,
-                'quizid' => $cmid,
-                'cmid' => $cmid,
-                'studentid' => $info->studentid,
-                'reportid' => $info->reportid,
-                'logaction' => 'delete',
-                'sesskey' => sesskey(),
-            ]);
+        $deleteurl = new moodle_url($PAGE->url, [
+            'courseid' => $courseid,
+            'quizid' => $cmid,
+            'cmid' => $cmid,
+            'studentid' => $info->studentid,
+            'reportid' => $info->reportid,
+            'logaction' => 'delete',
+            'sesskey' => sesskey(),
+        ]);
 
-            // Prepare attributes for the delete action.
-            $attributes = [
-                'data-confirmation' => 'modal',
-                'data-confirmation-type' => 'delete',
-                'data-confirmation-title-str' => json_encode(['delete', 'core']),
-                'data-confirmation-content-str' => json_encode(['areyousure_delete_record', 'quizaccess_proctoring']),
-                'data-confirmation-yes-button-str' => json_encode(['delete', 'core']),
-                'data-confirmation-action-url' => $deleteurl->out(false),
-                'data-confirmation-destination' => $deleteurl->out(false),
-                'class' => 'text-danger',
-            ];
+        // Prepare attributes for the delete action.
+        $attributes = [
+            'data-confirmation' => 'modal',
+            'data-confirmation-type' => 'delete',
+            'data-confirmation-title-str' => json_encode(['delete', 'core']),
+            'data-confirmation-content-str' => json_encode(['areyousure_delete_record', 'quizaccess_proctoring']),
+            'data-confirmation-yes-button-str' => json_encode(['delete', 'core']),
+            'data-confirmation-action-url' => $deleteurl->out(false),
+            'data-confirmation-destination' => $deleteurl->out(false),
+            'class' => 'text-danger',
+        ];
 
-            $deleteaction = new action_menu_link_secondary(
-                $deleteurl,
-                new pix_icon('t/delete', '', 'moodle'),
-                get_string('delete'),
-                $attributes
-            );
+        $deleteaction = new action_menu_link_secondary(
+            $deleteurl,
+            new pix_icon('t/delete', '', 'moodle'),
+            get_string('delete'),
+            $attributes
+        );
 
-            $actionmenu->add($deleteaction);
+        $actionmenu->add($deleteaction);
 
-            // Add rendered HTML to template context.
-            $row['actionmenu'] = $OUTPUT->render($actionmenu);
-            $rows[] = $row;
+        // Add rendered HTML to template context.
+        $row['actionmenu'] = $OUTPUT->render($actionmenu);
+        $rows[] = $row;
     }
     $templatecontext = (object)[
         'quizname'        => get_string('eprotroringreports', 'quizaccess_proctoring') . $quiz->name,
@@ -426,7 +427,7 @@ if (
         'backbutton' => preg_replace('/&amp;/', '&', $backbutton),
     ];
 
-    // Hemanth Added for Report sorting start----
+    // Hemanth added for sorting start----
         $templatecontext->fullname_dir = ($sort == 'fullname' && $dir == 'ASC') ? 'DESC' : 'ASC';
 
         $templatecontext->email_dir = ($sort == 'email' && $dir == 'ASC') ? 'DESC' : 'ASC';
@@ -445,7 +446,7 @@ if (
         if ($sort == 'timemodified') {
             $templatecontext->timemodifiedicon = ($dir == 'ASC') ? '↑' : '↓';
         }
-    // Hemanth Added for Report sorting end----
+    // Hemanth added for sorting end----
 
     echo $OUTPUT->render_from_template('quizaccess_proctoring/report', $templatecontext);
 
