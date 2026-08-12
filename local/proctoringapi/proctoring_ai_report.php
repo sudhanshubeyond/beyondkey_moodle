@@ -11,7 +11,7 @@ require_login($course, false, $cm);
 
 $context = context_module::instance($cm->id);
 require_capability('mod/quiz:viewreports', $context);
-
+$PAGE->activityheader->disable();
 $PAGE->set_url('/local/proctoringapi/proctoring_ai_report.php', ['cmid' => $id]);
 $PAGE->set_context($context);
 $PAGE->set_title(get_string('proctoringaireport', 'local_proctoringapi'));

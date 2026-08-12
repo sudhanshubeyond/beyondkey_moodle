@@ -51,4 +51,14 @@ $functions = [
         'capabilities' => 'quizaccess/proctoring:sendcamshot',
         'services'     => [MOODLE_OFFICIAL_MOBILE_SERVICE],
     ],
+
+// Get Proctoring Report using web service
+    'quizaccess_proctoring_get_report' => [
+        'classname'   => 'quizaccess_proctoring\external\get_report',
+        'methodname'  => 'get_report',
+        'classpath'   => '',
+        'description' => 'Get report',
+        'type'        => 'read',
+        'ajax'        => true,
+    ],
 ];
