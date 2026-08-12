@@ -26,26 +26,53 @@ define(['core/ajax'], function(Ajax) {
             totalRecords = response.total;
 
             let pagination = response.enablepagenation;
+            let enablesearch = response.enablesearch;
 
             let tbody = document.querySelector('#proctoring-table tbody');
             tbody.innerHTML = '';
 
-            response.records.forEach(function(row) {
+            if (response.records.length === 0) {
+                tbody.innerHTML = `
+                    <tr>
+                        <td colspan="7" style="text-align: center;" class="alert alert-info text-center">
+                            No records are found.
+                        </td>
+                    </tr>`;
+            } else {
+                response.records.forEach(function(row) {
 
-                let tr = document.createElement('tr');
+                    const formattedDate = new Intl.DateTimeFormat('en-GB', {
+                        day: 'numeric',
+                        month: 'short',
+                        year: 'numeric',
+                        hour: 'numeric',
+                        minute: '2-digit',
+                        hour12: true
+                    }).format(new Date(row.timecreated * 1000))
+                      .replace('am', 'AM')
+                      .replace('pm', 'PM');
 
-                tr.innerHTML = `
-                    <td>${row.fullname}</td>
-                    <td>${row.attemptid}</td>
-                    <td>${row.focus_score_percent}%</td>
-                    <td>${row.cheating_risk_percent}%</td>
-                    <td>${row.risk_level}</td>
-                    <td>${row.finalobservations ?? ''}</td>
-                    <td>${new Date(row.timecreated * 1000).toLocaleString()}</td>
-                `;
+                    let tr = document.createElement('tr');
 
-                tbody.appendChild(tr);
-            });
+                    tr.innerHTML = `
+                        <td>${row.fullname}</td>
+                        <td style="text-align: center;">${row.attemptid}</td>
+                        <td style="text-align: center;">${row.focus_score_percent}%</td>
+                        <td style="text-align: center;">${row.cheating_risk_percent}%</td>
+                        <td>${row.risk_level}</td>
+                        <td>${row.finalobservations ?? ''}</td>
+                        <td>${formattedDate}</td>
+                    `;
+
+                    tbody.appendChild(tr);
+                });
+            }
+
+            const searchContainer = document.getElementById('searchbox');
+            const pagenationContainer = document.getElementById('pagenation');
+
+            searchContainer.style.display = enablesearch ? 'flex' : 'none';
+            pagenationContainer.style.display = enablesearch ? 'flex' : 'none';
 
             const paginationContainer = document.getElementById('pagination-container');
 
@@ -243,7 +270,6 @@ define(['core/ajax'], function(Ajax) {
     return {
 
         init: function(cmid) {
-
             currentCmid = cmid;
 
             attachSorting();
