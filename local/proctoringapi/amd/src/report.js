@@ -60,11 +60,36 @@ define(['core/ajax'], function(Ajax) {
                         <td style="text-align: center;">${row.focus_score_percent}%</td>
                         <td style="text-align: center;">${row.cheating_risk_percent}%</td>
                         <td>${row.risk_level}</td>
-                        <td>${row.finalobservations ?? ''}</td>
+                        <td>
+                            <div class="observation-wrapper">
+                                <div class="observation-content">
+                                    ${row.finalobservations ?? ''}
+                                </div>
+                                <a href="#" class="observation-toggle">View more</a>
+                            </div>
+                        </td>
                         <td>${formattedDate}</td>
                     `;
 
                     tbody.appendChild(tr);
+                });
+
+                tbody.querySelectorAll('.observation-toggle').forEach(function(toggle) {
+
+                    toggle.addEventListener('click', function(e) {
+                        e.preventDefault();
+
+                        const wrapper = toggle.closest('.observation-wrapper');
+
+                        wrapper.classList.toggle('expanded');
+
+                        if (wrapper.classList.contains('expanded')) {
+                            toggle.textContent = 'View less';
+                        } else {
+                            toggle.textContent = 'View more';
+                        }
+                    });
+
                 });
             }
 

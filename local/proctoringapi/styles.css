@@ -1,0 +1,17 @@
+#page-local-proctoringapi-proctoring_ai_report .observation-content {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4;
+    overflow: hidden;
+}
+
+#page-local-proctoringapi-proctoring_ai_report .observation-wrapper.expanded .observation-content {
+    display: block;
+}
+
+#page-local-proctoringapi-proctoring_ai_report .observation-toggle {
+    display: inline-block;
+    margin-top: 5px;
+    cursor: pointer;
+    text-decoration: none;
+}
