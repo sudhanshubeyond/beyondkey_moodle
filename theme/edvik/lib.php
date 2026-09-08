@@ -32,6 +32,10 @@ defined('MOODLE_INTERNAL') || die();
  */
 function theme_edvik_page_init(moodle_page $page) {
     $page->requires->jquery();
+
+    $page->requires->js(
+        new moodle_url('/theme/edvik/javascript/naturalsearch.js')
+    );
 }
 
 function theme_edvik_get_main_scss_content($theme) {
