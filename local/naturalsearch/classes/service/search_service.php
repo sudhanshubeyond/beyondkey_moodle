@@ -200,11 +200,11 @@ class search_service {
         ];
 
         /*
-         * Add Authorization header only when an API key
-         * has been configured.
-         */
+        * Add X-Api-Key header when an API key
+        * has been configured.
+        */
         if (!empty($apikey)) {
-            $headers[] = 'Authorization: Bearer ' . $apikey;
+            $headers[] = 'X-Api-Key: ' . $apikey;
         }
 
         /*
